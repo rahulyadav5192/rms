@@ -1,0 +1,476 @@
+Emp ID,Centre,Emp Name,Email Id ,Business,LOB,Sub LOB,WFO/WFH,EMP Type
+NIF0125226,Lucknow,Iqra Javed,iqra.javed_nif@external.swiggy.in,IM,Chat,IM-Chat BAU ,WFH ,FTE
+NIF0125239,Lucknow,Tanya Tiwari,tanya.tiwar_nif@external.swiggy.in,IM,Chat,IM-Chat BAU ,WFH ,FTE
+NIF0125250,Lucknow,tulika maurya,tulik.maury_nif@external.swiggy.in,IM,Chat,IM-Chat BLCK ,WFH ,FTE
+NIF0125252,Lucknow,Tanya Maurya,tanya.maury_nif@external.swiggy.in,IM,Chat,IM-Chat BLCK ,WFH ,FTE
+NIF0125294,Lucknow,Priyanshu kanoujia,priya.kanou_nif@external.swiggy.in,IM,Chat,IM-Chat BAU ,WFH ,FTE
+NIF0125298,Lucknow,Ashutosh Tiwari,ashut.tiwar_nif@external.swiggy.in,IM,Chat,IM-Chat BAU ,WFH ,FTE
+NIF0125300,Lucknow,Simran Sachan,simra.sacha_nif@external.swiggy.in,IM,Chat,IM-Chat BLCK ,WFH ,FTE
+NIF0225081,Lucknow,Gausiya Ali,gausi.ali_nif@external.swiggy.in,IM,Chat,IM-Chat BAU ,WFH ,FTE
+NIF0225216,Lucknow,Mohd Adnan Aleem,mohd.aleem_nif@external.swiggy.in,IM,Chat,IM-Chat BLCK ,WFH ,FTE
+NIF0225333,Lucknow,Sameera Siddiqui ,samee.siddi_nif@external.swiggy.in,IM,Chat,IM-Chat BAU ,WFH ,FTE
+NIF0225334,Lucknow,Ritika Singh,ritik.singh2_nif@external.swiggy.in,IM,Chat,IM-Chat BAU ,WFH ,FTE
+NIF0225345,Lucknow,Rhythm Chaturvedi,rhyth.chatu_nif@external.swiggy.in,IM,Chat,IM-Chat BAU ,WFH ,FTE
+NIF0225349,Lucknow,Tanishka,tanis.tanis_nif@external.swiggy.in,IM,Chat,IM-Chat BAU ,WFH ,FTE
+NIF0225382,Lucknow,Shweba sheikh,shweb.sheik_nif@external.swiggy.in,IM,Chat,IM-Chat BAU ,WFH ,FTE
+NIF0325014,Lucknow,Arzoo,saba.saba_nif@external.swiggy.in,IM,Chat,IM-Chat BAU ,WFH ,FTE
+NIF0325013,Lucknow,Saba,arzoo.arzoo_nif@external.swiggy.in,IM,Chat,IM-Chat BAU ,WFH ,FTE
+NIF0325268,Lucknow,Sakshi Dwivedi,sakshi.d2_nif@external.swiggy.in,IM,Chat,IM-Chat BAU ,WFH ,FTE
+NIF1222027,Niftel,Akshat Yadav,aksha.yadav_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,FTE
+NIF0323154,Niftel,Muskan Srivastava,muska.sr_pt_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,PTE
+NIF0323181,Niftel,Mirza Kashif Beg,mirza.kashi_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,PTE
+NIF0323252,Niftel,Avinash Khanna,avina.k_pt_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,PTE
+NIF0423089,Niftel,Harshit yadav,harsh.yadav3_nif@external.swiggy.in,Food,Chat,Food - Chat SD,WFH,PTE
+NIF0623069,Niftel,Fiza Khan,fiza.kh_pt_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,FTE
+NIF0623142,Niftel,Hemant Singh,heman.singh_nif@external.swiggy.in,Food,Chat,Food - Chat SD,WFH,PTE
+NIF0923211,Niftel,Sibga Shakeel,sibga.shake_nif@external.swiggy.in,Food,Chat,Food - Chat L2-GL Pre,WFH,FTE
+NIF1023023,Niftel,Nihit bajpai,nihi.bapt1_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,PTE
+NIF1023031,Niftel,Simran Chand,simr.chpt_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,FTE
+NIF1023035,Niftel,Laiba Ayaz,laib.gupt_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,FTE
+NIF1023038,Niftel,Arshad Ahmed Khan,arsh.kupt_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,PTE
+NIF1023093,Niftel,Eram Fatima,eram.fapt_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,FTE
+NIF1123026,Niftel,Tatheer Fatima,tath.fapt_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,PTE
+NIF1123089,Niftel,Farheen Bano,farhe.1_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,PTE
+NIF1123151,Niftel,Danish Khan,danis.khan1_nif@external.swiggy.in,Food,Chat,Food - Chat SD,WFH,PTE
+NIF1223044,Niftel,Manvi nayyar,manvi.nayya_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,FTE
+NIF1223054,Niftel,Aastha Vishwakarma,astha.vishw_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,PTE
+NIF1223065,Niftel,MD Farhan,mohd.farha_nif@external.swiggy.in,Food,Chat,Food - Chat BAU,WFH,FTE
+NIF1223099,Niftel,Shreya Srivastava,shrey.sriva_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,PTE
+NIF1223114,Niftel,Namra Fatima,namr.fati_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,FTE
+NIF1223108,Niftel,Sarika Soni,sari.so_pt_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,PTE
+NIF0124148,Niftel,Eram Fatima_1,eram.fa_pt3_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,FTE
+NIF0224095,Niftel,Nirmal Ojha,nirm.oj_pt_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,FTE
+NIF0225408,Niftel,Ayesha Siddiqa,ayesh.siddi_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,PTE
+NIF0225429,Niftel,Mahi,mahi.mahi_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,PTE
+NIF0225432,Niftel,Shariya Parveen,shari.parve_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,PTE
+NIF0225428,Niftel,Shifali,shifa.shifa_nif@external.swiggy.in,Food,Chat,Food - Chat SD,WFH,PTE
+NIF0225407,Niftel,Siddhi Gupta,siddh.gupta_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,PTE
+NIF0224186,Niftel,Zahra Ubaid,zahr.ub_pt_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,PTE
+NIF0324029,Niftel,Mariyam wakeel,mari.wa_pt_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,PTE
+NIF0324043,Niftel,Shahneela Fatima Ahmad,shah.ah_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,FTE
+NIF0324180,Niftel,Khushi Gupta,khush.gu_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,PTE
+NIF0324185,Niftel,Nikita,nikit.nikit_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,FTE
+NIF0324284,Niftel,Neetika Singhal,neet.si_pt_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,FTE
+NIF0424040,Niftel,Priyanshi Pandey,priya.pa_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,FTE
+NIF0424090,Niftel,Faisal Khan,faisa.kh_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,FTE
+NIF0424074,Niftel,Rinky Sharma,rinky.sh_pt_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,PTE
+NIF0424112,Niftel,khushi Tripathi,khush.tr_pt2_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,PTE
+NIF0424126,Niftel,Radhika Jaiswal,radhi.ja2_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,FTE
+NIF0424155,Niftel,Shaariah Shakeel,shaar.sh_pt_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,PTE
+NIF0424149,Niftel,Shivansh Sahu,shiva.sa_nif@external.swiggy.in,Food,Chat,Food - Chat L2-GL Pre,WFH,FTE
+NIF0424214,Niftel,Monika Arya,monik.ar_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,FTE
+NIF0424198,Niftel,Nisha Sharma,nisha.sh_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,FTE
+NIF0424251,Niftel,Mehreen Rizvi,mehre.ri_pt_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,FTE
+NIF0424289,Niftel,Ananya singh yadav,anan.ya_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,PTE
+NIF0424278,Niftel,Bhoomi Gupta,bhoom.gupta_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,FTE
+NIF0424295,Niftel,Rahil mufeed,rahi.mu_pt_nif@external.swiggy.in,Food,Chat,Food - Chat SD,WFH,PTE
+NIF0424281,Niftel,Tanisha khan,tani.kh_pt_nif@external.swiggy.in,Food,Chat,Food - Chat L2-GL Pre,WFH,FTE
+NIF0524022,Niftel,Ritika Nigam_1,ritik.ni1_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,FTE
+NIF0524094,Niftel,Ayushi Jaiswal,ayush.ja_pt_nif@external.swiggy.in,Food,Chat,Food - Chat L2-GL Pre,WFH,FTE
+NIF0524110,Niftel,Mehvish Rashid,mehvi.ra_pt_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,PTE
+NIF0524105,Niftel,Preeti Kaur,preet.ka_pt_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,PTE
+NIF0524101,Niftel,Shaista Begum,shais.be_pt_nif@external.swiggy.in,Food,Chat,Food - Chat SD,WFH,PTE
+NIF0524153,Niftel,Alina Ali,alina.al_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,FTE
+NIF0524146,Niftel,Mohammad Salman,moham.sa_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,PTE
+NIF0524169,Niftel,Nitesh,nites.ni_pt_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,FTE
+NIF0524147,Niftel,Shivam Verma_2,shiva.ve_pt_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,PTE
+NIF0524254,Niftel,Ananya Kumar,anany.ku_pt_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,PTE
+NIF0524243,Niftel,Anurag Tiwari_1,anura.ti_pt1_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,PTE
+NIF0524240,Niftel,MD Rameez Akhtar,md.ak_pt_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,PTE
+NIF0524242,Niftel,Nahid parween,nahid.pa_pt_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,PTE
+NIF0524250,Niftel,Prakhar sharma,prakh.sh_pt_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,PTE
+NIF0524259,Niftel,Sweta pandey,sweta.pa_pt_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,FTE
+NIF0524238,Niftel,Tripti Shakya,tript.sh_pt_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,FTE
+NIF0524248,Niftel,Umama Siraj,umama.si_pt_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,FTE
+NIF0524258,Niftel,Vaishali,vaish.va_pt_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,PTE
+NIF0524130,Niftel,Mohd Zaid,mohd.za1_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,PTE
+NIF0524283,Niftel,Prince Sahu,princ.sa__pt_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,PTE
+NIF0524272,Niftel,Khushi Sahu,khush.sahu_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,PTE
+NIF0524305,Niftel,Khushi Singh,khush.si_pt_nif@external.swiggy.in,Food,Chat,Food - Chat L2-GL Pre,WFH,FTE
+NIF0524315,Niftel,Rayyan Ahmad,rayya.ah_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,FTE
+NIF0524304,Niftel,Saba Rameez,saba.ra_pt_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,PTE
+NIF0524393,Niftel,Rashi Kanaujiya,rashi.ka_pt_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,FTE
+NIF0524389,Niftel,Saurabh Pratap Singh,saura.si_nif@external.swiggy.in,Food,Chat,Food - Chat L2,WFH,FTE
+NIF0524438,Niftel,Aditya Srivastava,adity.sr_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,FTE
+NIF0524448,Niftel,Shivani Singh Chauhan,shiva.ch_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,FTE
+NIF0524472,Niftel,Faisal Qadeer,faisa.qa_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,FTE
+NIF0524469,Niftel,Tanya Yadav,tanya.ya_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,PTE
+NIF0624110,Niftel,Rishabh Srivastava_1,risha.sr_pt_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,PTE
+NIF0624103,Niftel,Vivek Kumar Yadav,vivek.ya_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,PTE
+NIF0624108,Niftel,Ayana Anwar,ayana.an_pt_nif@external.swiggy.in,Food,Chat,Food - Chat BAU,WFH,PTE
+NIF0624289,Niftel,Krishna Verma,krish.ve_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,PTE
+NIF0624301,Niftel,Amrit Mani Tripathi,amrit.tr_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,FTE
+NIF0624312,Niftel,Ishika,ishik.is_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,FTE
+NIF0624304,Niftel,Tarun Kumar,tarun.ku_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,PTE
+NIF0624326,Niftel,Anshika Yadav,anshi.ya_pt_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,FTE
+NIF0724023,Niftel,areesha fatima,arees.fa_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,PTE
+NIF0724012,Niftel,Kartikey Khanna,karti.kh_pt_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,PTE
+NIF0724029,Niftel,shraddha kannojia,shrad.ka_pt_nif@external.swiggy.in,Food,Chat,Food - Chat SD,WFH,PTE
+NIF0724014,Niftel,Aroosa Aisha Mohsen,aroos.mo_pt_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,FTE
+NIF0723113,Niftel,Firdous Fatima,firdo.fatim1_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,FTE
+NIF0723097,Niftel,Taha Tauheed,taha.tauhe_nif@external.swiggy.in,Food,Chat,Food - Chat L2-GL Pre,WFH,FTE
+NIF0724129,Niftel,Ankit Jhingren,ankit.jh_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,FTE
+NIF0724151,Niftel,Shivangi Mishra,shiva.mi_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,PTE
+NIF0724181,Niftel,Tuba Jalal,tuba.tu_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,FTE
+NIF0724208,Niftel,Abhay Raj Verma,abhay.ve_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,PTE
+NIF0724207,Niftel,Tamanna Verma,taman.ve_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,FTE
+NIF0724251,Niftel,Aparna Singh,aparn.si_nif@external.swiggy.in,Food,Chat,Food - Chat L2-GL Pre,WFH,FTE
+NIF0724254,Niftel,Insha Kidwai,insha.ki_nif@external.swiggy.in,Food,Chat,Food - Chat SQ,WFH,FTE
+NIF0724260,Niftel,Mirza Salim Beg,mirza.be_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,PTE
+NIF0724259,Niftel,Shivani singh chauhan_1,shiva.ch_pt_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,PTE
+NIF0724252,Niftel,Yasir Khan,yasir.kh1_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,FTE
+NIF0724277,Niftel,Jashika Singh,jashi.si_nif@external.swiggy.in,Food,Chat,Food - Chat L2,WFH,FTE
+NIF0724278,Niftel,Nashra,nashr.na_nif@external.swiggy.in,Food,Chat,Food - Chat L2,WFH,FTE
+NIF0724323,Niftel,Abdul Majid,abdul.ma1_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,FTE
+NIF0824028,Niftel,Achitya Gupta,achit.gu_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,FTE
+NIF0824027,Niftel,Mahin Fatima,mahin.fa_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,PTE
+NIF0824021,Niftel,Manas Awasthi,manas.aw_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,FTE
+NIF0824025,Niftel,Ridhima Singh,ridhi.si_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,PTE
+NIF0824060,Niftel,Marium,mariu.ma_pt_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,PTE
+NIF0824070,Niftel,Iqra Khan ,iqra.kh_pt_nif@external.swiggy.in,Food,Chat,Food - Chat BAU,WFH,PTE
+NIF0924023,Niftel,Mohd Fahad Farooqui,mohd.fa1_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,PTE
+NIF0924009,Niftel,Saad Khan,saad.kh_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,FTE
+NIF0924281,Niftel,Mohd Umar,mohd.umar2_nif@external.swiggy.in,Food,Chat,Food - Chat L2-GL Pre,WFH,FTE
+NIF0924270,Niftel,Sachin Maurya ,sachi.maury_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,FTE
+NIF0924231,Niftel, Syed Kamran Hussain,syed.hussa1_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,PTE
+NIF0924328,Niftel,Mohd Ayan,mohd.ayan3_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,FTE
+NIF0924309,Niftel,Panchsheel,panch.sheel_nif@external.swiggy.in,Food,Chat,Food - Chat L2-GL Pre,WFH,FTE
+NIF0924340,Niftel,Khushnuma Fatima,khush.fatim1_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,FTE
+NIF1024090,Niftel,Asad Sabri,asad.as_nif@external.swiggy.in,Food,Chat,Food - Chat L2-GL Pre,WFH,FTE
+NIF1024071,Niftel,Syed Farhan Faisal,syed.fa_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,PTE
+NIF1024091,Niftel,Kushagra Shukla,kusha.ku_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,PTE
+NIF1024273,Niftel,Alisha,alish.value_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,FTE
+NIF1024269,Niftel,Tayyaba fatima,tayya.fatim_nif@external.swiggy.in,Food,Chat,Food - Chat BAU,WFH,FTE
+NIF1024271,Niftel,Adnan Ahmad,adnan.ah_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,FTE
+NIF1024259,Niftel,Mohd Maroof,mohd.ma1_nif@external.swiggy.in,Food,Chat,Food - Chat SQ,WFH,FTE
+NIF1024264,Niftel,Sahil Rawat,sahil.ra_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,PTE
+NIF1024323,Niftel,Rohit Kumar,rohit.ku1_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,FTE
+NIF1024368,Niftel,Juned Alam,juned.al_nif@external.swiggy.in,Food,Chat,Food - Chat L2-GL Pre,WFH,FTE
+NIF1024365,Niftel,Ubaid Ahmad,ubaid.ah_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,FTE
+NIF1024476,Niftel,Pushpa Kumari Prasad,pushpa._pt_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,PTE
+NIF1024530,Niftel,Adarsh Soni,adarsh._pt_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,PTE
+NIF1024511,Niftel,Ayaan Alam,ayaan._pt_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,PTE
+NIF1024537,Niftel,Preksha,preksh._pt_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,PTE
+NIF1024505,Niftel,Shariya zubair,shariy._pt_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,PTE
+NIF1024520,Niftel,Sneha Dey,sneha._pt1_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,FTE
+NIF1024515,Niftel,Utkarsh Rajbhar,utkars._pt_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,PTE
+NIF1124043,Niftel,Khushi Kashyap ,khush.ka_nif@external.swiggy.in,Food,Chat,Food - Chat BAU,WFH,FTE
+NIF1124044,Niftel,Syed Faseel Abbas ,syed.ab2_nif@external.swiggy.in,Food,Chat,Food - Chat BAU,WFH,FTE
+NIF1124092,Niftel,Aurooba ,auroo._pt1_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,PTE
+NIF1124090,Niftel,HRITHIK HAZARIKA,hrith._pt1_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,PTE
+NIF1124114,Niftel,MOHAMMAD SAHAL ,moham._pt3_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,PTE
+NIF1124097,Niftel,Zahra Rizvi ,zahra._pt1_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,PTE
+NIF1124192,Niftel,alima khan 1,alima._pt1_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,PTE
+NIF1124271,Niftel,Disha Varyani,disha.va_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,FTE
+NIF1124275,Niftel,Palak Sangtani,palak.sa_nif@external.swiggy.in,Food,Chat,Food - Chat SQ,WFH,FTE
+NIF1124270,Niftel,Sanya Srivastava,sanya.sr_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,PTE
+NIF1124268,Niftel,Shivangi Dubey,shiva.du_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,PTE
+NIF1124290,Niftel,Sarfaraj Quadri,sarfa.qu_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,FTE
+NIF1124287,Niftel,Aditi Gupta,aditi.gu_nif@external.swiggy.in,Food,Chat,Food - Chat BAU,WFH,PTE
+NIF1124274,Niftel,Fiza Fatima,fiza.fa_nif@external.swiggy.in,Food,Chat,Food - Chat SQ,WFH,FTE
+NIF1124345,Niftel,Akshat Mishra1,aksha._pt4_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,PTE
+NIF1124371,Niftel,Mansi Kumari,mansi._pt_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,PTE
+NIF1124339,Niftel,Suyash Pal,suyas._pt2_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,PTE
+NIF1124348,Niftel,Vishesh Yadav,vishe._pt_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,PTE
+NIF1124487,Niftel,Ayra Fatima,ayra._pt4_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,PTE
+NIF1124468,Niftel,Diwakar Mishra1,diwak._pt_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,PTE
+NIF1124488,Niftel,Sumaiyah Syed,sumai.syed_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,FTE
+NIF1124469,Niftel,Puja Rani Kashyap,puja._pt_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,PTE
+NIF1124543,Niftel,javed qaisar khan,javed.kh1_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,FTE
+NIF1124541,Niftel,Saman Akhtar,saman.ak_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,FTE
+NIF1124548,Niftel,Saif Ali Khan,saif.kh1_nif@external.swiggy.in,Food,Chat,Food - Chat BAU,WFH,PTE
+NIF1124556,Niftel,Pooja Mishra,pooja.mi_nif@external.swiggy.in,Food,Chat,Food - Chat SD,WFH,PTE
+NIF1124577,Niftel,Mohd Nadeem,mohd.na_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,FTE
+NIF1124452,Niftel,Neha Maurya,neha.ma_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,PTE
+NIF1124500,Niftel,Ashutosh Kumar Prajapati,ashut.praja1_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,PTE
+NIF1124499,Niftel,Bushra Khan,bushr.khan1_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,FTE
+NIF1124506,Niftel,Ismail Ahmad,ismai.ahmad1_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,FTE
+NIF1124515,Niftel,Kashish Chauhan,kashi.chauh2_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,PTE
+NIF1124512,Niftel,Sujal Kashyap,sujal.kashy1_nif@external.swiggy.in,Food,Chat,Food - Chat L2-GL Pre,WFH,FTE
+NIF1124505,Niftel,Waqar Bano,waqar.bano1_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,FTE
+NIF1124530,Niftel,Mohammad Shuja Husain,moham.husai1_nif@external.swiggy.in,Food,Chat,Food - Chat BAU,WFH,FTE
+NIF1224060,Niftel,Mayank Bajpai,mayan.bajpa_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,PTE
+NIF1224048,Niftel,Shivangi Dwivedi,shiva.dwive_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,PTE
+NIF1224063,Niftel,Hameera Akhtar,hamee.akhta_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,FTE
+NIF1224105,Niftel,Aryan prant,aryan.12_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,PTE
+NIF1224222,Niftel,Ashis Gupta,ashis.1_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,FTE
+NIF1224220,Niftel,KULDEEP SINGH,kulde.1_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,PTE
+NIF1224199,Niftel,Bushra Kalam,bushr.kalam_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,PTE
+NIF1224183,Niftel,amsal shaikh,amsal.shaik1_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,PTE
+NIF1224313,Niftel,Ibrahim Khan,ibrah.khan_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,PTE
+NIF1224320,Niftel,Yogita Srivastava,yogit.sriva_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,FTE
+NIF1224336,Niftel,Komal yadav,komal.yadav2_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,FTE
+NIF1224344,Niftel,Prince Kumar Yadav,princ.yadav1_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,FTE
+NIF1224378,Niftel,Anjali Prajapati,anjal.praja_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,FTE
+NIF1224368,Niftel,Mansi Yadav,mansi.yadav1_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,FTE
+NIF1224373,Niftel,Suraj Singh,suraj.singh11_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,PTE
+NIF1224388,Niftel,Anjali Baghel,anjal.baghe_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,FTE
+NIF1224398,Niftel,ANKIT MAURYA,ankit.maury_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,PTE
+NIF1224390,Niftel,Zaid Khan,zaid.khan3_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,FTE
+NIF0125384,Niftel,Akarshi Gupta,akars.gupta_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,FTE
+NIF0125391,Niftel,Ayushi Mishra,ayush.mishr_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,FTE
+NIF0125385,Niftel,Parth Pandey,parth.pande_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,PTE
+NIF0225169,Niftel,aish mirza,aish.mirza_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,PTE
+NIF0225161,Niftel,Ayushi khare_1,ayushi.k1_nif@external.swiggy.in,Food,Chat,Food - Chat L2-GL Pre,WFH,FTE
+NIF0225151,Niftel,AANCHAL,aanch.aa_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,FTE
+NIF0225272,Niftel,Maheszabeen Bano ,mahes.bano_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,PTE
+NIF0225265,Niftel,Zakiya Parveen,zakiy.parve_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,PTE
+NIF0325047,Niftel,Shipra Singh1,shipr.singh_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,PTE
+NIF0325097,Niftel,arshfeen fatima,arshf.fatim1_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,PTE
+NIF0325060,Niftel,divyanshi srivastava,divya.sriva_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,PTE
+NIF0325073,Niftel,Shreyash Yadav,shrey.yadav_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,PTE
+NIF0325074,Niftel,Alisha sheikh,alish.sheik_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,PTE
+NIF0325243,Niftel,sadaf ali,sadaf.ali_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,FTE
+NIF0325249,Niftel,kanishka chaurasiya,kanis.chaur_nif@external.swiggy.in,Food,Chat,Food - Chat CCRP,WFH,FTE
+NIF0325221,Niftel,Aaliya Fatima,aaliy.fatim_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,PTE
+NIF0325203,Niftel,abdullah khan2,abdul.khan2_nif@external.swiggy.in,Food,Chat,Food - Chat SD,WFH,PTE
+NIF0325206,Niftel, Ifra Tabassum ,ifra.tabas_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,PTE
+NIF0325208,Niftel,Shivansh Srivastava,shiva.sriva2_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,PTE
+NIF0325217,Niftel,Shriyansh Pandey,shriy.pande_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,PTE
+NIF0325218,Niftel,Ananya Kumari,anany.kumar_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,FTE
+NIF0325219,Niftel,Mohd Hisham,mohd.hisha1_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,PTE
+NIF0325223,Niftel, sauban,sauba.sauba_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,PTE
+NIF0325225,Niftel,Aliza Ehsaan ,aliza.ehsaa_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,PTE
+NIF0325252,Niftel,Ashwani Kumar Gupta,ashwa.gupta_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,PTE
+NIF0325506,Niftel,Arya shivangi singh,arya.singh1_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,PTE
+NIF0325508,Niftel,Vishal yadav1,visha.yadav_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,FTE
+NIF0325509,Niftel,Shristi Mishra,shris.mishr_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,PTE
+NIF0325513,Niftel,Kopal Nigam1,kopal.nigam_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,PTE
+NIF0325514,Niftel,evangeline christa bara,evang.bara_nif@external.swiggy.in,Food,Chat,Food - Chat SD,WFH,PTE
+NIF0325518,Niftel,HARSHITA CHHABRA,harsh.chhab_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,PTE
+NIF0325542,Niftel,Iqra Mehboob,iqra.mehbo_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,PTE
+NIF0425132,Niftel,Lakshya Chauhan ,laksh.1_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,PTE
+NIF0425133,Niftel,Vishal Mishra1,visha.11_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,PTE
+NIF0425137,Niftel,Preksha Jain,preks.1_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,PTE
+NIF0425143,Niftel,Ujjawal Gupta,ujjaw.1_nif@external.swiggy.in,Food,Chat,Food - Chat SD,WFH,PTE
+NIF0425144,Niftel,Arman khan,arman.1_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,PTE
+NIF0425149,Niftel,Kunal Chaurasia,kunal.12_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,FTE
+NIF0425153,Niftel,Mohammad Arham Kamil,moham.11_nif@external.swiggy.in,Food,Chat,Food - Chat SD,WFH,PTE
+NIF0425155,Niftel,Aun Abbas Rizvi,aun.1_nif@external.swiggy.in,Food,Chat,Food - Chat SD,WFH,PTE
+NIF0425308,Niftel,Vishakha Verma,visha.12_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,PTE
+NIF0425309,Niftel,Nida quraishi1,nida.11_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,PTE
+NIF0425311,Niftel,Mohd Faheem,mohd.16_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,PTE
+NIF0425312,Niftel,Ishan mishra,ishan.11_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,PTE
+NIF0425315,Niftel,Shimanshu pandey,shima.1_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,PTE
+NIF0425319,Niftel,Muskan Khichi,muska.11_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,PTE
+NIF0425320,Niftel,Mahak Gupta,mahak.1_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,PTE
+NIF0425321,Niftel,Ashi Seth,ashi.11_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,PTE
+NIF0425322,Niftel,Deepal pundir,deepa.14_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,PTE
+NIF0425324,Niftel,Prerna Srivastava,prern.1_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,PTE
+NIF0425325,Niftel,Shikha Bharti,shikh.1_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,PTE
+NIF0425327,Niftel,Umama Chand,umama.1_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,PTE
+NIF0425329,Niftel,Shilpa Singh,shilp.1_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,PTE
+NIF0425331,Niftel,Mariyam Fatima1,mariy.1_nif@external.swiggy.in,Food,Chat,Food - Chat BLCK,WFH,PTE
+NIF0425455,Niftel,Nishi Raza,nishi.raza_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,FTE
+NIF0425453,Niftel,Namrata Rai,namra.rai_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,PTE
+NIF0425474,Niftel,Ashray kumar,ashra.kumar_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,FTE
+NIF0425622,Niftel,Shalini Prasad,shali.prasa1_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,FTE
+NIF0425661,Niftel,Akansha Tripathi,akans.1_nif@external.swiggy.in,Food,Chat,Food - Chat BAU,WFH,PTE
+NIF0425664,Niftel,Shazia Kalam,shazi.1_nif@external.swiggy.in,Food,Chat,Food - Chat BAU,WFH,PTE
+NIF0425665,Niftel,Akshat Mishra2,aksha.11_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,PTE
+NIF0425666,Niftel,Ashiya Das Gupta,ashiy.1_nif@external.swiggy.in,Food,Chat,Food - Chat BAU,WFH,PTE
+NIF0425668,Niftel,Rishav Agarwal,risha.11_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,PTE
+NIF0425671,Niftel,Aditi Verma,aditi.14_nif@external.swiggy.in,Food,Chat,Food - Chat PQ ,WFH,PTE
+NIF0425675,Niftel,Rukshar Ali,ruksh.1_nif@external.swiggy.in,Food,Chat,Food - Chat BAU,WFH,PTE
+NIF0425677,Niftel,Sarifa Khatoon,sarif.1_nif@external.swiggy.in,Food,Chat,Food - Chat BAU,WFH,PTE
+NIF0425684,Niftel,Priyanshi Singh,priya.120_nif@external.swiggy.in,Food,Chat,Food - Chat BAU,WFH,PTE
+NIF0425686,Niftel,Suraj Mishra,suraj.19_nif@external.swiggy.in,Food,Chat,Food - Chat BAU,WFH,PTE
+NIF0425674,Niftel,Tuba Fatima1,tuba.11_nif@external.swiggy.in,Food,Chat,Food - Chat SD,WFH,PTE
+NIF0425710,Niftel,Anudh Fathima,anudh.1_nif@external.swiggy.in,Food,Chat,Food - Chat SD,WFH,PTE
+NIF0525247,Niftel,Subham Bitt,subha.bitt_nif@external.swiggy.in,Food,Chat,Food - Chat BAU,WFH,PTE
+NIF0525251,Niftel,Nityansh Nigam,nitya.nigam_nif@external.swiggy.in,Food,Chat,Food - Chat BAU,WFH,PTE
+NIF0525254,Niftel,Sania Khan,sania.khan1_nif@external.swiggy.in,Food,Chat,Food - Chat BAU,WFH,PTE
+NIF0525255,Niftel,Tanu Chawla,tanu.chawl_nif@external.swiggy.in,Food,Chat,Food - Chat BAU,WFH,PTE
+NIF0525258,Niftel,Soumya Rai,soumy.rai_nif@external.swiggy.in,Food,Chat,Food - Chat BAU,WFH,PTE
+NIF0525261,Niftel,Bhavana Mondhey,bhava.mondh_nif@external.swiggy.in,Food,Chat,Food - Chat BAU,WFH,PTE
+NIF0525262,Niftel,Tabish Jamal,tabis.jamal_nif@external.swiggy.in,Food,Chat,Food - Chat BAU,WFH,PTE
+NIF0525263,Niftel,Naemah,naema.naema_nif@external.swiggy.in,Food,Chat,Food - Chat BAU,WFH,PTE
+NIF0525264,Niftel,Mohd Asad,mohd.asad3_nif@external.swiggy.in,Food,Chat,Food - Chat BAU,WFH,PTE
+NIF0525265,Niftel,Malika Fareed Khan,malik.khan_nif@external.swiggy.in,Food,Chat,Food - Chat BAU,WFH,PTE
+NIF0525289,Niftel,Rahul Seth,rahul.seth2_nif@external.swiggy.in,Food,Chat,Food - Chat BAU,WFH,PTE
+NIF0525527,Niftel,Khushi Soni,khush.12_nif@external.swiggy.in,Food,Chat,Food - Chat BAU,WFH,PTE
+NIF0525528,Niftel,Sakshi Mehta,saksh.11_nif@external.swiggy.in,Food,Chat,Food - Chat BAU,WFH,PTE
+NIF0525530,Niftel,Mirza Daud Beg,mirza.1_nif@external.swiggy.in,Food,Chat,Food - Chat BAU,WFH,PTE
+NIF0525532,Niftel,Vidushi Mishra,vidus.1_nif@external.swiggy.in,Food,Chat,Food - Chat BAU,WFH,PTE
+NIF0525535,Niftel,Athar Ellahi,athar.1_nif@external.swiggy.in,Food,Chat,Food - Chat BAU,WFH,PTE
+NIF0525536,Niftel,Bhumi Shree,bhumi.11_nif@external.swiggy.in,Food,Chat,Food - Chat BAU,WFH,PTE
+NIF0525537,Niftel,Sahil Purushottam Bambolkar,sahil.125_nif@external.swiggy.in,Food,Chat,Food - Chat BAU,WFH,PTE
+NIF0525540,Niftel,Mohd. Ahmad Raza,mohd.18_nif@external.swiggy.in,Food,Chat,Food - Chat BAU,WFH,PTE
+NIF0525544,Niftel,Shreya Srivastava,shrey.12_nif@external.swiggy.in,Food,Chat,Food - Chat BAU,WFH,PTE
+NIF0525547,Niftel,Sheuli Singh,sheul.1_nif@external.swiggy.in,Food,Chat,Food - Chat BAU,WFH,PTE
+NIF0525526,Niftel,Mohd Faiz Raeen,mohd.raeen_nif@external.swiggy.in,Food,Chat,Food - Chat BAU,WFH,FTE
+NIF0525523,Niftel,Shivendra Kumar Thanvi,shive.thanv_nif@external.swiggy.in,Food,Chat,Food - Chat BAU,WFH,FTE
+NIF0625230,Niftel,Anila,anila.1_nif@external.swiggy.in,Food,Chat,Food - Chat BAU,WFH,PTE
+NIF0625231,Niftel,Roshni Jafri,roshn.11_nif@external.swiggy.in,Food,Chat,Food - Chat BAU,WFH,PTE
+NIF0625232,Niftel,Mahima Kharbanda,mahim.1_nif@external.swiggy.in,Food,Chat,Food - Chat BAU,WFH,PTE
+NIF0625233,Niftel,Shreya Dixit,shrey.14_nif@external.swiggy.in,Food,Chat,Food - Chat BAU,WFH,PTE
+NIF0625237,Niftel,Asif Mushtaq Mir,asif.11_nif@external.swiggy.in,Food,Chat,Food - Chat BAU,WFH,PTE
+NIF0625239,Niftel,Manhal,manha.1_nif@external.swiggy.in,Food,Chat,Food - Chat BAU,WFH,PTE
+NIF0625240,Niftel,Pooja Bhati,pooja.113_nif@external.swiggy.in,Food,Chat,Food - Chat BAU,WFH,PTE
+NIF0625241,Niftel,Pulkit Srivastava ,pulki.1_nif@external.swiggy.in,Food,Chat,Food - Chat BAU,WFH,PTE
+NIF0625243,Niftel,Ritika Kashaudhan ,ritik.17_nif@external.swiggy.in,Food,Chat,Food - Chat BAU,WFH,PTE
+NIF0625244,Niftel,Vishi,vishi.1_nif@external.swiggy.in,Food,Chat,Food - Chat BAU,WFH,PTE
+NIF0625245,Niftel,Mohd Asif Khan,mohd.19_nif@external.swiggy.in,Food,Chat,Food - Chat BAU,WFH,PTE
+NIF0625247,Niftel,Syeda Rabiya ,syeda.11_nif@external.swiggy.in,Food,Chat,Food - Chat BAU,WFH,PTE
+NIF0625248,Niftel,Munazza Ahmad,munaz.1_nif@external.swiggy.in,Food,Chat,Food - Chat BAU,WFH,PTE
+NIF0625250,Niftel,Namrah Nazir,namra.1_nif@external.swiggy.in,Food,Chat,Food - Chat BAU,WFH,PTE
+NIF0625251,Niftel,Vikalp Lavania ,vikal.1_nif@external.swiggy.in,Food,Chat,Food - Chat BAU,WFH,PTE
+NIF0625253,Niftel,Subham Paul,subha.1_nif@external.swiggy.in,Food,Chat,Food - Chat BAU,WFH,PTE
+NIF0525093,,Saiyad Sharik,saiyad.sk.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0325579,,Vaani kothari,vaani.ki.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0824125,,Waziha,waziha.km.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF1024132,,Iram Qureshi,iram.qi.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF1024139,,Sanobar Ashfaq,sanobar.aq.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0325282,,Samreena,samreena.km.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0124105,,Swati Raghuwanshi,swati.ri.blinkit@niftel.in,Blinkit,Chat,BAU,WFH,FTE
+NIF1124205,,Aabida Rashid,rashid.aa.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF1123132,,Zainab Fatima,zainab.ft.blinkit@niftel.in,Blinkit,Chat,BAU,WFH,FTE
+NIF1124217,,Zeba Parveen,zeba.pn.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF1024410,,Farida Parveen,farida.pn.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0524038,,Priya pareek,priya.pk.blinkit@niftel.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0125274,,Rameeza Nazar,rameeza.nr.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0425447,,Usaid Siddiqui,usaid.si.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0125097,,Aditi Sahu,aditi.su.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0225242,,Syed Ahmed,sabir.ad.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0924254,,Menka Jaiswal,menka.js.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0225134,,Sumbul Arshi,sumbul.ai.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0525100,,Murtaza Mushtaq Wani,murtaza.wi.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0924246,,Aishwarya Patel,aishwarya.pt.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0325043,,Sumaiyya Moin,sumaiyya.mn.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0224128,,Divyanshi Chatwani,divyanshi.chatwani.blinkit@niftel.in,Blinkit,Chat,BAU,WFH,PTE
+NIF0824198,,Kritika Singh,kritika.sh.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,PTE
+NIF0325571,,Fabeha,fabeha.km.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0125372,,Mohhammad Sufiyan,sufiyan.md.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0323226,,Priyanshi Pal,priyanshi.p.blinkit@niftel.in,Blinkit,Chat,BAU,WFH,PTE
+NIF0225492,,Aliya Siddiqui,aliya.si.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,PTE
+NIF0624146,,Muskan Paliwal,muskan.pl.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,PTE
+NIF0125158,,Mohd Taha Yaseen,taha.yn.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,PTE
+NIF0425020,,Aniket Choudhary,aniket.cy.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0425708,,Tabinda Mehmood,tabinda.mehmood.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF1224354,,Madhu Gautam,madhu.gm.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0824048,,Shiwangi Singh,shiwangi.sh.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0125090,,Qamber mirza,qamber.ma.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0225358,,Kashish Muskan,kashish.mn.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0325174,,Shivani Sahu,shivani.su.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0525091,,Nanditha Pasi,nanditha.pi.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF1024136,,Aniqa Mushtaq,aniqa.mq.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0324131,,RAUNAQUE PARWEEN,raunaque.pn.blinkit@niftel.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0325042,,Shweta Mishra,shweta.ma.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF1024396,,Sneha Kashyap,sneha.kp.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0325288,,Mihir Singh Walia,mihir.wa.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0225371,,Saina Singh,saina.sh.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF1024128,,Musavir Ahmad Bhat,musavir.bt.blinkir@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0425348,,Umar Farooque,umar.fq.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0224219,,Laiba azam,laiba.am.blinkit@niftel.in,Blinkit,Chat,BAU,WFH,FTE
+NIF1024007,,Subhana khan,subhana.kn.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0424156,,Amna Suhail,aman.sl.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0225491,,Jiya Thakur,jiya.tr.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0525331,,Fatima Zafar,fatima.zr.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0624009,,Shambhavi Srivastava,shambhavi.sa.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0425584,,Mariya Ahmed,mariya.ad.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0225481,,Samiksha Bandral,samiksha.bl.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0425595,,Abhishek Pandey,abhishek.py.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0525597,,Anuradha Nishad,anuradha.nd.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0525323,,Priya Sharma,priya.sharma.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0425594,,Khadija Arif,khadija.af.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0425592,,Shubhansh,shubhansh.kr.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0425343,,Numaya Nadeem,numaya.nm.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0525344,,Shaista Mannan,shaista.mn.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0325183,,Zainab Khan,zainab.ka.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0325031,,Hamza Khan,hamza.kn.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,PTE
+NIF0124040,,Nikita Soni,nikita.so.blinkit@niftel.in,Blinkit,Chat,BAU,WFH,PTE
+NIF0525329,,Juned Ajajahmed Arab,juned.ab.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0425178,,Sebastian Simon Lugun,sebastian.ln.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0425761,,Kirti Bajaj,kirti.bj.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0824041,,Khushi Yadav,khushi.yv.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0425176,,Naziya Sayeed,naziya.sd.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0425763,,Jaylaxmi Sharma,jaylaxmi.sa.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0525334,,Sudipta Barua,sudipta.ba.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0425706,,Kulsum Zehra,kulsum.za.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF1022004,,Neelofar,neelofar.blinkit@niftel.in,Blinkit,Chat,BAU,WFH,PTE
+NIF0623189,,Radha Gurjar,radha.g.blinkit@niftel.in,Blinkit,Chat,BAU,WFH,PTE
+NIF1024124,,Abhinav Middha,abhinav.ma.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,PTE
+NIF0225130,,Muhsina Qayoom,muhsina.qm.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,PTE
+NIF0325283,,Kashish Kesarwani,kashish.ki.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,PTE
+NIF0325190,,Shruti Singh,shruti.sh.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0225368,,Insha Noreen,insha.nn.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0225364,,Sanjami Chowdhury,sanjami.cy.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0425758,,Rifa Mirza,rifa.mirza.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF1024479,,Antra Srivastava,antra.sa.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0425434,,Maavra Javed,maavra.jd.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0325563,,Suchita Das,suchita.ds.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0425016,,Mohini Jain,mohini.jn.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0525340,,Srayosi Chanda,srayosi.ca.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0525332,,Dip Ghosh,dip.gh.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0525327,,Ilma Ishrat,ilma.it.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0425436,,Vipul Singh,vipul.sh.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0324023,,Gaurav Dwivedi,gaurav.di.blinkit@niftel.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0425340,,Priti Gupta,priti.ga.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0125160,,Maimuna Khan,maimuna.kn.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0525321,,Rubeena Qureshi,rubeena.qi.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0824204,,Bishwajeet Sharma,bishwajeet.sa.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0525589,,Anisha Parwin,anisha.pn.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0425707,,Parth Karan,parth.kn.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0425036,,Jaya Kumari,jaya.ki.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0525595,,Drishti,drishti.km.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0525588,,Osman Ahmed Khan,osman.kn.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0525591,,Reetu Dulgach,reetu.dh.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0425029,,Rahul Choudhary,rahul.cy.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0525085,,Shraeyshth Tandon,shraeyshth.tn.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0525089,,Adeem Imtiyaz,adeem.iz.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0525336,,Aditya Gupta,aditya.ga.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0225133,,Aanshi Sahu,aanshi.su.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0425431,,Saniya Gupta,saniya.gt.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0425170,,Rukhsaar Rahman,rukhsaar.rn.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0125173,,Nikhil yadav,nikhil.yv.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0325038,,Nitesh Kumar,nitesh.kr.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0525322,,Farheen Muskan,farheen.mn.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0525078,,Ishani Upadhyay,ishani.uy.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0824290,,MOHD NASAR KHAN,nasar.md.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0325196,,Rashmi Kukreja,rashmi.ka.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0425445,,Shivanshi Banerji,shivanshi.bi.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0325037,,Munazah Firdous,munazah.fs.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0425433,,Arnab Makar,arnab.mr.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0425759,,Shrajit Kumar Srivastava,shrajit.sa.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0525337,,Ameera Zehra,ameera.za.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0324161,,Devarshi Sharma,devarshi.sh.blinkit@niftel.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0425008,,Anjali Rajput,anjali.rt.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0425014,,Kashfa Anjum,kashfa.am.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF1124224,,Rumaisa Najeeb,rumaisa.nb.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0425345,,Souvik Saha,souvik.sa.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0325028,,Anushka Wadhwa,anushka.wa.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0425164,,Afroz Khanam,afroz.km.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0325110,,Sabahat Ahmed,sabahat.ad.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0125111,,Saima Naseem,saima.nm.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0425353,,Sana Mirza,sanamirza.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0425352,,Ishmeet Singh Anand,ishmeet.ad.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0425035,,Gunpreet Kaur Chadha,gunpreet.ca.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF1224136,,Navita Sharma,navita.sa.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0225241,,Lubna Salim,lubna.sm.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0425703,,Naziya Jeelani,naziya.ji.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF1024125,,Mehreer,mehreer.md.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0325175,,Fuzail Ahmad,fuzail.ah.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0125361,,Fatima Khan Durrani,fatima.kn.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0425347,,Vaishali Verma,vaishali.cn.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0425694,,Himanshi Singh,himanshi.sh.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0225250,,Palak Agarwal,palak.al.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0325184,,Ashfaque Hussain,ashfaque.hn.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0425021,,Gaurav Ashiya,gaurav.aa.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF1224137,,Ritika Sahu,ritika.su.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0225254,,Mansi Singh,mansi.sh.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0225482,,Iqra Imtiyaz,iqra.im.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0525099,,Amanullah Khan,amanullah.ka.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0525349,,Karmanjeet Kaur,karmanjeet.kr.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0425772,,Rishab Chand,rishabh.chand.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0425762,,Stella Manisha Mullick,stella.mk.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0325569,,Syed Yabna Raza,yaban.ra.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0425428,,Raj Gupta,raj.ga.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0425027,,Koyna Chatterjee,koyna.ce.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0425691,,Ruhaba Khan,ruhaba.kn.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0425764,,Prachi Shukla,prachi.sa.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0425582,,Tushar Didmise,tushar.de.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0224207,,Sona Rana,sona.ra.blinkit@niftel.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0425031,,Aamna Bano,aamna.bo.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0225484,,Arti Shaw,arti.sw.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0525320,,Varsha Singh,varsha.sh.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE
+NIF0425338,,Zoya Baig,zoya.bg.blinkit@niftel.co.in,Blinkit,Chat,BAU,WFH,FTE

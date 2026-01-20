@@ -1,0 +1,325 @@
+"Emp Name","Emp Id","Branch Name",Department,Designation,"No of days attended"
+"SAUMYA SINGH",NIF0315001,Lucknow,Compliance,"Compliance Head",0
+"SHIV KUMAR",NIF0717001,Lucknow,Boiler,Advisor,11
+Uvaish,NIF0420001,Lucknow,"Digital Marketing","Software Development Head",3
+"DIGVIJAY KAMAL",NIF0121001,Lucknow,IVA,Mentor,0
+"Ayman Mustafa",NIF0221003,Lucknow,TDS,"Sr Advisor",0
+"Sahil Suhail Siddiqui",NIF0321007,Lucknow,"Cape Communications","Graphic Designer",7
+"MOHD REHAN KHAN",NIF0621005,Lucknow,IVA,"Financial Advisor",14
+"Fariya Ali",NIF0721007,Lucknow,"Cape Communications","Operations Executive",0
+"Angel Ali Abidi",NIF0821006,Lucknow,TDS,Advisor,0
+"MOHAMMAD ADIL",NIF0821010,Lucknow,IVA,"Financial Advisor",0
+"Arzan Khan",NIF0921002,Lucknow,TDS,Advisor,0
+"VINEET THAPA",NIF1021010,Lucknow,IVA,"Financial Advisor",0
+"MOHAMMED ZAFAR",NIF1121003,Lucknow,Boiler,Advisor,0
+"RAHIB ALI",NIF1121008,Lucknow,IVA,"Financial Advisor",0
+"Ruby Kanojia",NIF0322003,Lucknow,"Human Resources","HR Team Lead",0
+"Hashir Suhail Siddiqui",NIF0522011,Lucknow,"Cape Communications","Operations Executive",0
+"Suheb Ahmed",990020131,Lucknow,IndiaMart,"Field Sales Executive",0
+"Ankit Pandey",990022647,Lucknow,IndiaMart,"Field Sales Executive",0
+"Shubham Srivastava",990010858,Lucknow,IndiaMart,"Team Leader",0
+"Ritik Singh",990014058,Lucknow,IndiaMart,"Field Sales Executive",0
+"Karim Akhtar",990011283,Lucknow,IndiaMart,"Field Sales Executive",1
+"Ajay Kumar",990025667,Lucknow,IndiaMart,"Field Sales Executive",0
+"Raj Kumar",990010743,Lucknow,IndiaMart,"Team Leader",2
+"Himanshu Chawla",NIF0722045,Lucknow,"Life Insurance",Advisor,0
+"SHIV MOHAN SINGH",NIF0922025,Lucknow,HDR,Advisor,0
+"Shikhar Singh",990032526,Lucknow,IndiaMart,"Field Sales Executive",0
+"Anuj Tiwari",990032527,Lucknow,IndiaMart,"Field Sales Executive",0
+"TANMAY KHARE",NIF1122002,Lucknow,IVA,"Financial Advisor",0
+"Sunny Bhatu",990031838,Lucknow,IndiaMart,"Field Sales Executive",0
+"Mohd. Faizan",990038173,Lucknow,IndiaMart,"Field Sales Executive",0
+"Afnan Siddiqui",NIF1222150,Lucknow,Blinkit,Trainer,0
+"PRIYA SINGH",NIF0123037,Lucknow,"Inbound - IVA","Financial Advisor",7
+"ABDUL KAVI",NIF0123030,Lucknow,IVA,Mentor,1
+"Shayan Ullah Khan",NIF0123019,Lucknow,"Life Insurance",Advisor,0
+Abuzar,NIF0123020,Lucknow,Boiler,Advisor,0
+"Hamid Ali Rizvi",NIF0123029,Lucknow,"Life Insurance",Mentor,1
+"Fahad Ahmad Siddiqui",NIF0123084,Lucknow,"US Process","Financial Advisor",4
+"Sarvesh Kumar",990043172,Lucknow,IndiaMart,"Field Sales Executive",0
+"VISHWAS SINGH",NIF0123123,Lucknow,"US Process","Financial Advisor",11
+"Faisal Ansari",NIF0123150,Lucknow,"Digital Marketing","Android Developer",1
+"Arshad Khan",NIF0123151,Lucknow,"Digital Marketing","Android Developer",0
+"NAYAB ANSARI",NIF0123209,Lucknow,"US Process","Financial Advisor",14
+"Aman Singh",NIF0223112,Lucknow,Swiggy,"Team Leader",0
+"Ayush pandey",NIF0323142,Lucknow,Swiggy,"Customer Service Associate",0
+"Aaron Sebastian",NIF0323283,Lucknow,"US Process",Advisor,14
+"Rahul Kumar",NIF0622007,Lucknow,"Office Boy","Office Boy",9
+"Shailendra Srivastava",NIF0922001,Lucknow,Management,"VP-Operations & Business Development",0
+"Shivam Kumar Kashyap",NIF1122037,Lucknow,Accounts,"Payroll Compliance Executive",0
+"Aman Gupta",NIF0423088,Lucknow,Swiggy,"Customer Service Associate",0
+"Harshit yadav",NIF0423089,Lucknow,Swiggy,"Customer Service Associate",0
+"Abhijeet Kumar Mishra",NIF0423177,Lucknow,Swiggy,"Customer Service Associate",11
+"Joydeep Nand",NIF0623067,Lucknow,"US Process","Financial Advisor",13
+Kaustubh,NIF0623094,Lucknow,Swiggy,"Customer Service Associate",0
+"Simran Singh",NIF0623209,Lucknow,Swiggy,"Customer Service Associate",0
+"Naved Hasan",NIF0623214,Lucknow,Swiggy,"Customer Service Associate",0
+"Alisha Khan",NIF0323241,Lucknow,"Digital Marketing","Content Writer",3
+"TAHA TAUHEED",NIF0723097,Lucknow,Swiggy,"Customer Service Associate",0
+"Deepak Rawat",NIF0723118,Lucknow,Swiggy,"Customer Service Associate",0
+"Aryan kumar",NIF0723125,Lucknow,Blinkit,"Customer Service Associate",0
+"Saurabh Kumar",NIF0723127,Lucknow,Blinkit,"Customer Service Associate",6
+"Shubham Kumar",NIF0723131,Lucknow,Blinkit,"Customer Service Associate",0
+"ABHISHEK SHAW",NIF0723136,Lucknow,Blinkit,"Customer Service Associate",0
+"Aniket Kumar",NIF0723176,Lucknow,Swiggy,"Customer Service Associate",1
+"Anjum Naiyer",NIF0723191,Lucknow,Recruitment,Manager,0
+"Mohammad Faiz",NIF0723192,Lucknow,Boiler,Advisor,0
+"Walter paul",NIF0823021,Lucknow,Swiggy,"Customer Service Associate",0
+"Shubhangi Sinha",NIF0823039,Lucknow,"Human Resources","Hr Recruiter",0
+"Mayank Maurya",NIF0823062,Lucknow,Swiggy,"Customer Service Associate",0
+"Anushka Shukla",NIF0823092,Lucknow,Swiggy,"Customer Service Associate",0
+"Zulfiqar Hussain",NIF0823103,Lucknow,Swiggy,"Customer Service Associate",0
+"Anas habib",NIF0823126,Lucknow,Swiggy,"Customer Service Associate",3
+"Abhishek chaurasia",NIF0823130,Lucknow,Swiggy,"Customer Service Associate",0
+"Akash Kashyap",NIF0823132,Lucknow,Swiggy,"Customer Service Associate",8
+"Khushboo Jaiswar",NIF0823165,Lucknow,Swiggy,"Customer Service Associate",0
+"Aquib Siddique",NIF0823171,Lucknow,Swiggy,"Customer Service Associate",0
+"Garima Arora",NIF0923006,Lucknow,"Human Resources","Hr Recruiter",0
+"Piyush Mishra",NIF0923019,Lucknow,"US Process","Financial Advisor",12
+"Gurleen Kaur Sondhi",NIF0923030,Lucknow,Blinkit,"CSA/ Rider Support",0
+"Syed Azhar Ali",NIF0923031,Lucknow,Blinkit,"CSA/ Rider Support",0
+"Abhishek Singh",NIF0923035,Lucknow,Blinkit,"CSA/ Rider Support",1
+"Nabeel Nawaz Khan",NIF0923042,Lucknow,Blinkit,"CSA/ Rider Support",0
+"Zainab Khan",NIF0923046,Lucknow,Swiggy,"Customer Service Associate",0
+"Sushant Maurya",NIF0923078,Lucknow,Swiggy,"Customer Service Associate",0
+"Divyansh Shukla",NIF0923079,Lucknow,Swiggy,"Customer Service Associate",0
+"Ujjwal Banka",NIF0923094,Lucknow,Swiggy,"Customer Service Associate",0
+"Ayan Ahmad",NIF0923115,Lucknow,Swiggy,"Customer Service Associate",0
+"Adarsh Kumar",NIF0923117,Lucknow,Swiggy,"Customer Service Associate",0
+"Qamber Mirza",NIF0923120,Lucknow,Swiggy,"Customer Service Associate",2
+"Alqama Quzat",NIF0923132,Lucknow,"US Process","Financial Advisor",5
+"Muskan Singh",NIF0923143,Lucknow,Blinkit,"CSA/ Rider Support",14
+"Soumya Srivastava",NIF0923149,Lucknow,Blinkit,"CSA/ Rider Support",0
+"Shagufta Chishti",NIF0923182,Lucknow,Swiggy,"Customer Service Associate",0
+"Aditi singh",NIF0923199,Lucknow,Swiggy,"Customer Service Associate",0
+"Sibga Shakeel",NIF0923211,Lucknow,Swiggy,"Customer Service Associate",1
+"neeraj kumar",NIF0923228,Lucknow,Swiggy,"Customer Service Associate",0
+"Anshumali Dwivedi",NIF0923231,Lucknow,Swiggy,"Quality Analyst",0
+"Vishal Kumar Singh",NIF0923277,Lucknow,HDR,Advisor,0
+"Aryan chaurasiya",NIF0923299,Lucknow,Swiggy,"Customer Service Associate",0
+"Brijkishor Sharma",NIF1023013,Lucknow,"Business Energy",Advisor,0
+"Divyansh Patel",NIF1023016,Lucknow,"Business Energy",Advisor,0
+"Areeba Ayaz",NIF1023034,Lucknow,Swiggy,"Customer Service Associate",0
+"Laiba Ayaz",NIF1023035,Lucknow,Swiggy,"Customer Service Associate",0
+"Aniket verma",NIF1023092,Lucknow,Swiggy,"Customer Service Associate",0
+"Arisha beg",NIF1023116,Lucknow,Blinkit,"Customer Service Associate",1
+"Haider Mehndi",NIF1023159,Lucknow,Swiggy,"Customer Service Associate",0
+"Dev Bansal",NIF1023177,Lucknow,Swiggy,"Customer Service Associate",3
+"osamah Siddiqui",NIF1023197,Lucknow,HDR,Advisor,0
+"Mohammad Salim",NIF1023229,Lucknow,IVA,Advisor,3
+"Yasir Mahmood",NIF1023230,Lucknow,Solar,Advisor,0
+"Shivani Rajpoot",NIF1123001,Lucknow,Solar,Advisor,0
+"Mohd Shaquib SIddiquie",NIF1123013,Lucknow,Swiggy,"Customer Service Associate",1
+"Husnain Raza Anasari",NIF1123035,Lucknow,Boiler,Advisor,0
+"Farheen Bano",NIF1123089,Lucknow,Swiggy,"Customer Service Associate",0
+"Sanjay Yadav",NIF1123093,Lucknow,Swiggy,"Customer Service Associate",0
+"Vaishnavi Tiwari",NIF1123108,Lucknow,Swiggy,"Customer Service Associate",0
+"Priya Pandey",NIF1123150,Lucknow,Swiggy,"Customer Service Associate",1
+"Danish Khan",NIF1123151,Lucknow,Swiggy,"Customer Service Associate",0
+"Lokesh Kumar Yadav",NIF1123179,Lucknow,Swiggy,"Customer Service Associate",0
+"Tushar Singh",NIF1123183,Lucknow,Swiggy,"Customer Service Associate",0
+"Archita Soni",NIF1123211,Lucknow,Swiggy,"Customer Service Associate",0
+"Saif Ali Khan",NIF1123216,Lucknow,Blinkit,"CSA/ Rider Support",0
+"Mohammad Kaif",NIF1123221,Lucknow,Blinkit,"CSA/ Rider Support",0
+"Vinay Patel",NIF1223013,Lucknow,Swiggy,"Customer Service Associate",5
+"Sameera Akhtar",NIF1223053,Lucknow,"US Process","Financial Advisor",0
+"Aastha Vishwakarma",NIF1223054,Lucknow,Swiggy,"Customer Service Associate",0
+"Riza Abbas",NIF1223067,Lucknow,Swiggy,"Customer Service Associate",0
+"Tanya Baranwal",NIF1223105,Lucknow,Recruitment,"HR Executive",0
+"Arif Khursheed",NIF0124003,Lucknow,"US Process","Financial Advisor",14
+"Mohd Abuzar",NIF0124004,Lucknow,"US Process","Financial Advisor",12
+"rahul mishra",NIF0124048,Lucknow,HDR,"Financial Advisor",0
+"Prakhar Gupta",NIF0124049,Lucknow,HDR,"Financial Advisor",0
+"ABHIMANYU RAI",NIF0124079,Lucknow,"US Process","Financial Advisor",10
+"Alisha Iqbal",NIF0124087,Lucknow,"US Process","Financial Advisor",12
+"Prakhar Shankar",NIF0124088,Lucknow,"US Process","Financial Advisor",11
+Tarannum,NIF0124152,Lucknow,Swiggy,"Customer Service Associate",0
+"Kaushiki Srivastava",NIF0224002,Lucknow,"Human Resources","HR Executive",0
+"Deepak Singh",NIF0224004,Lucknow,Solar,"Financial Advisor",0
+"Syed Farzan Mendhi",NIF0224005,Lucknow,Solar,"Financial Advisor",0
+"Harshit Agarwal",NIF0224018,Lucknow,Swiggy,"Customer Service Associate",1
+"Mariyam Zaheer",NIF0224020,Lucknow,Swiggy,"Customer Service Associate",0
+"MOHAMMAD SHAHAN KHAN",NIF0224026,Lucknow,Blinkit,"Customer Service Associate",0
+"Simran Sachan",NIF0224034,Lucknow,Blinkit,"Customer Service Associate",0
+"Kanak Gupta",NIF0224040,Lucknow,HDR,"Financial Advisor",2
+"Syed Baqar Raza",NIF0224044,Lucknow,Solar,"Financial Advisor",0
+"Sandeep Rajpoot",NIF0224060,Lucknow,"US Process","Financial Advisor",10
+"Harsh Arora",NIF0224091,Lucknow,Recruitment,"Customer Service Associate",0
+"Mahendra Pratap Singh",NIF0224121,Lucknow,IVA,"Financial Advisor",0
+"Kirti Sharma",NIF0224122,Lucknow,Recruitment,"HR Executive",8
+"Shashank Rawat",NIF0224123,Lucknow,Recruitment,"HR Executive",8
+"prakhar singh",NIF0224191,Lucknow,Blinkit,"Customer Service Associate",0
+"Utkarsh Verma",NIF0224192,Lucknow,Blinkit,"Customer Service Associate",14
+"Tripti Mishra",NIF0224193,Lucknow,Blinkit,"Customer Service Associate",1
+"jaya pandey",NIF0224194,Lucknow,Blinkit,"Customer Service Associate",0
+"Anushka Khare",NIF0224196,Lucknow,Blinkit,"Customer Service Associate",1
+"Asif Hasan",NIF0224202,Lucknow,Blinkit,"Customer Service Associate",0
+"Anjali Srivastava",NIF0224203,Lucknow,Blinkit,"Customer Service Associate",0
+"Anchal Trivedi",NIF0224206,Lucknow,Blinkit,"Customer Service Associate",2
+"Sona Rana",NIF0224207,Lucknow,Blinkit,"Customer Service Associate",0
+"Aditya Gautam",NIF0224210,Lucknow,Blinkit,"Customer Service Associate",0
+"Sachin Yadav",NIF0224211,Lucknow,"US Process","Financial Advisor",10
+"Namra Fatima",NIF0324001,Lucknow,Recruitment,"Hr Recruiter",0
+"Shubhangi Asthana",NIF0324005,Lucknow,"Human Resources","HR Intern",0
+"Vidhi Bajpai",NIF0324040,Lucknow,Swiggy,"Customer Service Associate",0
+"Ananya Singh",NIF0324042,Lucknow,Swiggy,"Customer Service Associate",0
+"Shahneela Fatima Ahmed",NIF0324043,Lucknow,Swiggy,"Customer Service Associate",0
+"Nripendra Srivastava",NIF0324048,Lucknow,"US Process","Financial Advisor",8
+"Parth Sachar",NIF0324053,Lucknow,"US Process","Financial Advisor",11
+"Monty Singh",NIF0324073,Lucknow,"Secure Loan","Financial Advisor",3
+"Kavish Shukla",NIF0324116,Lucknow,"US Process","Financial Advisor",12
+"Raj Bahadur",NIF0324117,Lucknow,"US Process","Financial Advisor",7
+"Tuba Quadeer",NIF0324151,Lucknow,Blinkit,"Customer Service Associate",2
+"jasmeet kaur",NIF0324192,Lucknow,Swiggy,"Customer Service Associate",0
+"khushi vaish",NIF0324201,Lucknow,Swiggy,"Customer Service Associate",0
+"Depanshu gupta",NIF0324202,Lucknow,Swiggy,"Customer Service Associate",1
+"Aditya Kumar",NIF0324234,Lucknow,Swiggy,"Customer Service Associate",2
+"Shivam Rathour",NIF0324290,Lucknow,"US Process","Sr. Financial Advisor",12
+"Shrishti Dixit",NIF0324327,Lucknow,Swiggy,"Customer Service Associate",0
+"Rohit Singh",NIF0424007,Lucknow,"US Process","Financial Advisor",12
+"VISHAL SHARMA",NIF0424071,Lucknow,"US Process","Financial Advisor",11
+"Amisha naag",NIF0424076,Lucknow,Swiggy,"Customer Service Associate",0
+"Khushi Tripathi",NIF0424112,Lucknow,Swiggy,"Customer Service Associate",0
+Aradhana,NIF0424132,Lucknow,"US Process","Financial Advisor",12
+"Ashutosh Tripathi",NIF0424186,Lucknow,"US Process","Financial Advisor",9
+"Abhijeet Shukla",NIF0424187,Lucknow,"US Process","Financial Advisor",12
+"Nisha Sharma",NIF0424198,Lucknow,Swiggy,"Customer Service Associate",1
+"Yukti Singh",NIF0424199,Lucknow,Swiggy,"Customer Service Associate",7
+"Utkarsh Awasthi",NIF0424219,Lucknow,Blinkit,"Customer Service Associate",8
+"Habiba Masood",NIF0424234,Lucknow,Solar,"Financial Advisor",0
+"Shirish Agrahari",NIF0424256,Lucknow,Swiggy,"Customer Service Associate",11
+"Simran Singh Kasera",NIF0424265,Lucknow,Swiggy,"Customer Service Associate",0
+Rupshree,NIF0424270,Lucknow,Blinkit,"Customer Service Associate",0
+"Aloish Pratap Singh",NIF0424275,Lucknow,Solar,"Financial Advisor",0
+"Hrishika Sharma",NIF0424282,Lucknow,Swiggy,"Customer Service Associate",0
+"Ananya Singh Yadav",NIF0424289,Lucknow,Swiggy,"Customer Service Associate",0
+"Bushra Fatima",NIF0424303,Lucknow,Blinkit,"Customer Service Associate",8
+"Priyanshu Kanaujiya",NIF0424306,Lucknow,"US Process","Financial Advisor",12
+"Ayush verma",NIF0424308,Lucknow,"US Process","Financial Advisor",11
+"Raj Mehrotra",NIF0424309,Lucknow,"US Process","Financial Advisor",12
+"Alka Seth",NIF0424310,Lucknow,"US Process","Financial Advisor",12
+"Mohd Ajeem",NIF0424311,Lucknow,"US Process","Financial Advisor",7
+"Aditya Sharma",NIF0424312,Lucknow,"US Process","Financial Advisor",12
+"Haider Abbas Rizvi",NIF0424314,Lucknow,Solar,"Financial Advisor",10
+"Salman Ali",NIF0424319,Lucknow,"Canada Process","Financial Advisor",0
+"Astha Srivastava",NIF0424322,Lucknow,"Canada Process","Financial Advisor",11
+"Ojaswini Gupta",NIF0524004,Lucknow,Solar,"Financial Advisor",10
+"Sayed Fatma Abbas",NIF0524016,Lucknow,Swiggy,"Customer Service Associate",11
+"Ritika Nigam",NIF0524022,Lucknow,Swiggy,"Customer Service Associate",1
+"Mahi Sharma",NIF0524032,Lucknow,Swiggy,"Customer Service Associate",0
+"Yash Shukla",NIF0524034,Lucknow,HDR,"Financial Advisor",12
+"Rishab Srivastava",NIF0524121,Lucknow,"US Process","Financial Advisor",12
+"Vertika Singh",NIF0524132,Lucknow,Swiggy,"Customer Service Associate",8
+"Adeeba Farkan",NIF0524133,Lucknow,Swiggy,"Customer Service Associate",0
+"Richa Bharti",NIF0524134,Lucknow,Swiggy,"Customer Service Associate",8
+"Akash Singh",NIF0524175,Lucknow,Swiggy,"Customer Service Associate",3
+"Divyanshu Singh",NIF0524180,Lucknow,"US Process","Financial Advisor",12
+"Dheeraj Singh",NIF0524181,Lucknow,"US Process","Financial Advisor",12
+"Ayush Kumar",NIF0524226,Lucknow,HDR,"Financial Advisor",12
+"Dishank Kumar",NIF0524227,Lucknow,HDR,"Financial Advisor",12
+"Ritish Singh",NIF0524233,Lucknow,Boiler,"Financial Advisor",7
+"Suraj Kumar",NIF0524308,Lucknow,Swiggy,"Customer Service Associate",2
+"Faizan Rasool",NIF0524314,Lucknow,Swiggy,"Customer Service Associate",0
+"Rayyan Ahmad",NIF0524315,Lucknow,Swiggy,"Customer Service Associate",14
+"Utkarsh Mishra",NIF0524316,Lucknow,Swiggy,"Customer Service Associate",4
+"Vansh Pandey",NIF0524317,Lucknow,Swiggy,"Customer Service Associate",5
+"Sabika Fatima",NIF0524319,Lucknow,Swiggy,"Customer Service Associate",0
+"Umesh Maurya",NIF0524323,Lucknow,Swiggy,"Customer Service Associate",3
+Rukhsana,NIF0524325,Lucknow,Swiggy,"Customer Service Associate",12
+"Harshit Rao",NIF0524326,Lucknow,Swiggy,"Customer Service Associate",1
+"Syed Mohd. Shahab",NIF0524336,Lucknow,"US Process","Financial Advisor",11
+"Shashank Singh",NIF0524337,Lucknow,"US Process","Financial Advisor",5
+"Rakshak Verma",NIF0524339,Lucknow,"US Process","Financial Advisor",12
+"Adnan Shams",NIF0524345,Lucknow,"US Process","Financial Advisor",8
+"Abhishek Chauhan",NIF0524346,Lucknow,"US Process","Financial Advisor",9
+"Saurabh Kashyap",NIF0524348,Lucknow,"US Process","Financial Advisor",11
+"Abdulla Siddiqui",NIF0524351,Lucknow,"US Process","Financial Advisor",11
+"Khun Khun Verma",NIF0524354,Lucknow,"US Process","Financial Advisor",12
+"Mohd Sharif Siddiqui",NIF0524356,Lucknow,"US Process","Financial Advisor",12
+"Aditya Rawat",NIF0524362,Lucknow,Blinkit,"Customer Service Associate",14
+"Shobhit Pandey",NIF0524363,Lucknow,Blinkit,"Customer Service Associate",13
+Sadaf,NIF0524376,Lucknow,Blinkit,"Customer Service Associate",6
+"Abhinav Kumar Pathak",NIF0524378,Lucknow,Blinkit,"Customer Service Associate",4
+"Shivansh Kumar Gupta",NIF0524379,Lucknow,Blinkit,"Customer Service Associate",0
+"Azhar Khan",NIF0524380,Lucknow,Blinkit,"Customer Service Associate",7
+"Ahmad Ilyas Alvi",NIF0524383,Lucknow,Swiggy,"Customer Service Associate",5
+"Sanskar Saini",NIF0524387,Lucknow,Swiggy,"Customer Service Associate",5
+"Taha Kaleem",NIF0524395,Lucknow,Swiggy,"Customer Service Associate",3
+"Iqra Hashmi",NIF0524397,Lucknow,Swiggy,"Customer Service Associate",0
+"Falak Fatima",NIF0524398,Lucknow,Swiggy,"Customer Service Associate",0
+"Raj Kumar Pal",NIF0524404,Lucknow,Swiggy,"Customer Service Associate",0
+"Shreya Mishra",NIF0524412,Lucknow,"US Process","Financial Advisor",12
+"Sonalika Dixit",NIF0524436,Lucknow,HDR,"Financial Advisor",11
+"Isra Khan",NIF0524441,Lucknow,Swiggy,"Customer Service Associate",14
+"Pragun Reuben Noora",NIF0524450,Lucknow,Swiggy,"Customer Service Associate",0
+"Utkarshi Upadhyay",NIF0524460,Lucknow,Recruitment,"HR Intern",7
+"M A",NIF0524466,Lucknow,IVA,"Financial Advisor",0
+"Ateeq Ur Rahman",NIF0524482,Lucknow,Swiggy,"Customer Service Associate",13
+"Saleha Muskan Khan",NIF0524483,Lucknow,Swiggy,"Customer Service Associate",10
+"Gurpreet Rastogi",NIF0524484,Lucknow,Swiggy,"Customer Service Associate",11
+"Sumaiya Ali",NIF0524488,Lucknow,Swiggy,"Customer Service Associate",11
+"Mohd Talha Khan",NIF0524489,Lucknow,Swiggy,"Customer Service Associate",10
+"Pragun Reuben Noora",NIF0624005,Lucknow,Blinkit,"Customer Service Associate",7
+Vedansh,NIF0624006,Lucknow,Blinkit,"Customer Service Associate",8
+"Asit Arora",NIF0624007,Lucknow,Blinkit,"Customer Service Associate",11
+"Rounak Singh",NIF0624008,Lucknow,Blinkit,"Customer Service Associate",9
+"VIDHI RASTOGI",NIF0624011,Lucknow,Blinkit,"Customer Service Associate",11
+"Raj Tiwari",NIF0624016,Lucknow,Blinkit,"Customer Service Associate",1
+"Shrishti Shukla",NIF0624018,Lucknow,Blinkit,"Customer Service Associate",12
+"Himanshu Singh",NIF0624019,Lucknow,Blinkit,"Customer Service Associate",13
+"Shubh Gupta",NIF0624020,Lucknow,Blinkit,"Customer Service Associate",2
+"Gaurav Singh Chauhan",NIF0624022,Lucknow,Blinkit,"Customer Service Associate",0
+"Mohd Mustaqeem",NIF0624023,Lucknow,Blinkit,"Customer Service Associate",5
+"Rajat singh",NIF0624058,Lucknow,Recruitment,"HR Intern",9
+"Akash Deep Verma",NIF0624075,Lucknow,Swiggy,"Customer Service Associate",1
+"Swapnil Singh",NIF0624077,Lucknow,Swiggy,"Customer Service Associate",0
+"Hasan Raza",NIF0624082,Lucknow,Swiggy,"Customer Service Associate",0
+"Bilal Shakeel",NIF0624089,Lucknow,Swiggy,"Customer Service Associate",13
+"Vishal Mishra",NIF0624090,Lucknow,Swiggy,"Customer Service Associate",10
+"Ashish Pramod Tiwari",NIF0624093,Lucknow,Boiler,"Financial Advisor",8
+"Deepak Kumar Sharma",NIF0624115,Lucknow,Swiggy,"Customer Service Associate",0
+"Manish Singh Negi",NIF0624142,Lucknow,"Canada Process","Financial Advisor",0
+"Simran Singh",NIF0624178,Lucknow,Recruitment,"Hr Recruiter",2
+"Aakriti Yadav",NIF0624186,Lucknow,Swiggy,"Customer Service Associate",0
+"Priya Samuel",NIF0624189,Lucknow,Swiggy,"Customer Service Associate",0
+"Sangam Yadav",NIF0624191,Lucknow,Swiggy,"Customer Service Associate",11
+"Adarsh Srivastava",NIF0624205,Lucknow,Boiler,"Financial Advisor",8
+"Fahad Ahmad",NIF0624206,Lucknow,Boiler,"Financial Advisor",8
+"Miss Tanu Yadav",NIF0624207,Lucknow,HDR,"Financial Advisor",0
+"Khushboo Gaur",NIF0624211,Lucknow,Swiggy,"Customer Service Associate",0
+"Satya Prakash",NIF0624212,Lucknow,Swiggy,"Customer Service Associate",0
+"Sourabh singh",NIF0624213,Lucknow,Swiggy,"Customer Service Associate",0
+"Abshar ali",NIF0624214,Lucknow,Swiggy,"Customer Service Associate",0
+"Ayush gupta",NIF0624215,Lucknow,Swiggy,"Customer Service Associate",0
+"Aastitva Singh",NIF0624217,Lucknow,Swiggy,"Customer Service Associate",0
+"Aman shukla",NIF0624218,Lucknow,Swiggy,"Customer Service Associate",0
+"Siddhi Srivastava",NIF0624219,Lucknow,Swiggy,"Customer Service Associate",0
+"Abhinav Shukla",NIF0624221,Lucknow,Swiggy,"Customer Service Associate",0
+"Prabhav Jaiswal",NIF0624224,Lucknow,Swiggy,"Customer Service Associate",0
+"Anshuman Yadav",NIF0624230,Lucknow,Swiggy,"Customer Service Associate",0
+"Khushi Gond",NIF0624231,Lucknow,Swiggy,"Customer Service Associate",0
+"Sherley Bazil",NIF0624234,Lucknow,IVA,"Financial Advisor",0
+"Raj Shekhar Singh",NIF0624236,Lucknow,Blinkit,"Customer Service Associate",1
+"Divya Bhatia",NIF0624237,Lucknow,Blinkit,"Customer Service Associate",3
+"Yash Srivastava",NIF0624238,Lucknow,Blinkit,"Customer Service Associate",4
+"Siddhant Gupta",NIF0624239,Lucknow,Blinkit,"Customer Service Associate",4
+" Utkarsh Kumar",NIF0624240,Lucknow,Blinkit,"Customer Service Associate",4
+"Annapoorna Singh",NIF0624241,Lucknow,Blinkit,"Customer Service Associate",4
+"Sachin Kumar",NIF0624243,Lucknow,Blinkit,"Customer Service Associate",1
+"Akshita Tripathi",NIF0624244,Lucknow,Blinkit,"Customer Service Associate",4
+"Tamanna Tanvir Siddiqui",NIF0624245,Lucknow,Blinkit,"Customer Service Associate",4
+"Mohd Hisham",NIF0624248,Lucknow,Blinkit,"Customer Service Associate",5
+"Varun Tiwari",NIF0624249,Lucknow,Blinkit,"Customer Service Associate",2
+"Kajal Tripathi",NIF0624250,Lucknow,Blinkit,"Customer Service Associate",4
+"Alishan Haider",NIF0624251,Lucknow,Blinkit,"Customer Service Associate",3
+"Anondi basak",NIF0624252,Lucknow,Blinkit,"Customer Service Associate",4
+"Yash Yadav",NIF0624253,Lucknow,Blinkit,"Customer Service Associate",4
+"shaurya singh",NIF0624254,Lucknow,Blinkit,"Customer Service Associate",2
+"Anant Prakash",NIF0624256,Lucknow,Blinkit,"Customer Service Associate",0
+"Pranjal Shahi",NIF0624271,Lucknow,IVA,"Financial Advisor",0
+"Tushar Rathour",NIF0624272,Lucknow,IVA,"Financial Advisor",0
+"Rahnuma Fahim",NIF0624287,Lucknow,Swiggy,"Customer Service Associate",0
+"Sumran Tauseef",NIF0624300,Lucknow,Swiggy,"Customer Service Associate",0
+"Aarushi verma",NIF0624305,Lucknow,Swiggy,"Customer Service Associate",0
+"Hashir Suhail",NIF0624377,Lucknow,IT,"IT Support",0
+"Somya Soni",NIF0624378,Lucknow,"Canada Process","Financial Advisor",0

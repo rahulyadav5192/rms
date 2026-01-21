@@ -70,6 +70,12 @@ $addAttendancePermission = user()->permission('add_attendance');
         @endforeach
     </x-table>
 </div>
+
+@if(isset($employeesPaginator) && method_exists($employeesPaginator, 'links'))
+    <div class="d-flex justify-content-end mt-3 attendance-pagination">
+        {!! $employeesPaginator->onEachSide(1)->links() !!}
+    </div>
+@endif
 <script>
 
     if(userRoleAdmin != true) {

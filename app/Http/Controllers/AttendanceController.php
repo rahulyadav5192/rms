@@ -194,7 +194,9 @@ class AttendanceController extends AccountBaseController
         //     }
         // }
 
-        $employees = $employees->get();
+        // Paginate employees list to avoid loading all employees at once
+        $employeesPaginator = $employees->paginate(50);
+        $employees = collect($employeesPaginator->items());
 
         $this->holidays = Holiday::whereRaw('MONTH(holidays.date) = ?', [$request->month])->whereRaw('YEAR(holidays.date) = ?', [$request->year])->get();
 
@@ -305,6 +307,7 @@ class AttendanceController extends AccountBaseController
         $this->employeeAttendence = $final;
         $this->holidayOccasions = $holidayOccasions;
         $this->leaveReasons = $leaveReasons;
+        $this->employeesPaginator = $employeesPaginator;
 
         $this->weekMap = Holiday::weekMap('D');
 

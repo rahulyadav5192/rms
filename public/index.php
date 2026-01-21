@@ -1,5 +1,11 @@
 <?php
 ini_set('memory_limit', '2048M');
+
+// Prevent PHP 8.4 deprecation notices (e.g., Carbon) from breaking JSON/AJAX responses.
+// You should ideally update dependencies, but this keeps the UI functional meanwhile.
+error_reporting(E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED);
+ini_set('display_errors', '0');
+
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Http\Request;
 

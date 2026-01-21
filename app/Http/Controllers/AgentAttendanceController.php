@@ -73,6 +73,77 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class AgentAttendanceController extends AccountBaseController
 {
+    /**
+     * Uniform error payload for CSV row issues.
+     */
+    private function pushCsvError(array &$errors, int $row, ?string $employeeId, string $message, ?string $field = null, $value = null): void
+    {
+        $payload = [
+            'row' => $row,
+            'employeeId' => $employeeId ?: 'N/A',
+            'message' => $message,
+        ];
+
+        if (!is_null($field)) {
+            $payload['field'] = $field;
+        }
+
+        if (!is_null($value)) {
+            $payload['value'] = is_scalar($value) ? (string) $value : json_encode($value);
+        }
+
+        $errors[] = $payload;
+    }
+
+    /**
+     * Parse header date cells coming from CSV exports.
+     * Supports multiple human formats and numeric Excel date serials.
+     */
+    private function parseHeaderDateCell(?string $cell): ?string
+    {
+        $cell = trim((string) $cell);
+
+        if ($cell === '') {
+            return null;
+        }
+
+        // Excel serial number dates sometimes appear in CSV
+        if (is_numeric($cell)) {
+            try {
+                // Excel epoch starts at 1899-12-30
+                return Carbon::create(1899, 12, 30)->addDays((int) $cell)->format('Y-m-d');
+            } catch (\Throwable $e) {
+                return null;
+            }
+        }
+
+        $formats = [
+            'l, F j, Y',   // Tuesday, April 1, 2025
+            'l, F d, Y',   // Tuesday, April 01, 2025
+            'D, M j, Y',   // Tue, Apr 1, 2025
+            'D, M d, Y',   // Tue, Apr 01, 2025
+            'd-m-Y',       // 01-04-2025
+            'd/m/Y',       // 01/04/2025
+            'm-d-Y',       // 04-01-2025
+            'm/d/Y',       // 04/01/2025
+            'Y-m-d',       // 2025-04-01
+        ];
+
+        foreach ($formats as $format) {
+            try {
+                return Carbon::createFromFormat($format, $cell)->format('Y-m-d');
+            } catch (\Throwable $e) {
+                // try next
+            }
+        }
+
+        // Last resort: Carbon parser (handles a lot of natural language dates)
+        try {
+            return Carbon::parse($cell)->format('Y-m-d');
+        } catch (\Throwable $e) {
+            return null;
+        }
+    }
     
     public function __construct()
     {
@@ -263,107 +334,156 @@ class AgentAttendanceController extends AccountBaseController
 
     public function uploadNonCsaAttendance(Request $request)
     {
-        if (!$request->hasFile('attendance_file')) {
-            return response()->json(['error' => 'No file uploaded'], 400);
-        }
-    
-        $file = $request->file('attendance_file');
-        $monthYear = $request->input('month_year', 'Apr-2025');
-    
-        $handle = fopen($file->getRealPath(), 'r');
-        if (!$handle) {
-            return response()->json(['error' => 'Unable to open file'], 400);
-        }
-    
-        // First row (Week and Dates)
-        $firstRow = fgetcsv($handle);
-        if (!$firstRow) {
-            return response()->json(['error' => 'Missing date row'], 400);
-        }
-    
-        // Second row (column headers with week ranges and attendance headers)
-        $secondRow = fgetcsv($handle);
-        if (!$secondRow) {
-            return response()->json(['error' => 'Missing header row'], 400);
-        }
-    
-        // Mapping date column indexes to their respective date and week number
-        $dateMap = []; // [index => ['date' => Y-m-d, 'week' => Week-XX]]
-        $currentWeek = null;
-        foreach ($firstRow as $index => $value) {
-            $cell = trim($value);
-            if (preg_match('/^Week-\d+$/i', $cell)) {
-                $currentWeek = $cell;
-            } elseif (preg_match('/^[A-Za-z]+, [A-Za-z]+ \d{1,2}, \d{4}$/', $cell)) {
-                try {
-                    $parsedDate = Carbon::createFromFormat('l, F j, Y', $cell)->format('Y-m-d');
-                    $dateMap[$index] = ['date' => $parsedDate, 'week' => $currentWeek];
-                } catch (\Exception $e) {
+        // Prevent vendor deprecation notices from breaking JSON responses during uploads
+        $prevDisplayErrors = ini_get('display_errors');
+        $prevErrorReporting = error_reporting();
+        ini_set('display_errors', '0');
+        error_reporting($prevErrorReporting & ~E_DEPRECATED);
+
+        try {
+            if (!$request->hasFile('attendance_file')) {
+                return response()->json(['error' => 'No file uploaded'], 400);
+            }
+
+            $file = $request->file('attendance_file');
+            if (!$file->isValid()) {
+                return response()->json(['error' => 'Invalid file upload'], 400);
+            }
+
+            $monthYear = $request->input('month_year', 'Apr-2025');
+
+            $handle = fopen($file->getRealPath(), 'r');
+            if (!$handle) {
+                return response()->json(['error' => 'Unable to open file'], 400);
+            }
+
+            $errors = [];
+
+            // CSV row numbers start at 1. We will read two header rows first.
+            $csvRowNumber = 0;
+
+            // First row (Week and Dates)
+            $firstRow = fgetcsv($handle);
+            $csvRowNumber++;
+
+            if (!$firstRow) {
+                fclose($handle);
+                return response()->json(['error' => 'Missing date row'], 400);
+            }
+
+            // Second row (column headers with week ranges and attendance headers)
+            $secondRow = fgetcsv($handle);
+            $csvRowNumber++;
+
+            if (!$secondRow) {
+                fclose($handle);
+                return response()->json(['error' => 'Missing header row'], 400);
+            }
+
+            // Mapping date column indexes to their respective date and week number
+            $dateMap = []; // [index => ['date' => Y-m-d, 'week' => Week-XX]]
+            $currentWeek = null;
+
+            foreach ($firstRow as $index => $value) {
+                $cell = trim((string) $value);
+
+                if (preg_match('/^Week-\d+$/i', $cell)) {
+                    $currentWeek = $cell;
                     continue;
                 }
+
+                // Try parsing any non-empty cell as date; different exports vary.
+                $parsedDate = $this->parseHeaderDateCell($cell);
+
+                if ($parsedDate) {
+                    $dateMap[$index] = ['date' => $parsedDate, 'week' => $currentWeek];
+                } elseif ($cell !== '' && str_contains($cell, ',')) {
+                    // Likely a date-like string but failed parsing
+                    $this->pushCsvError($errors, 1, null, 'Invalid date header format', 'date_header', $cell);
+                }
             }
-        }
-    
-        if (empty($dateMap)) {
-            return response()->json(['error' => 'No valid date columns found'], 400);
-        }
-    
-        // Index positions for employee fields
-        $empIdIndex = 3;
-        $fixedFields = [
-            'process' => 0,
-            'sub_process' => 1,
-            'department' => 2,
-            'emp_id' => 3,
-            'email_id' => 4,
-            'name' => 5,
-            'supervisor_name' => 6,
-            'designation' => 7,
-        ];
-    
-        $inserted = 0;
-        $updated = 0;
-        $errors = [];
-        $total = 0;
-    
-        // Read in chunks
-        $chunkSize = 100;
-        $chunk = [];
-    
-        while (($row = fgetcsv($handle)) !== false) {
-            $chunk[] = $row;
-            if (count($chunk) >= $chunkSize) {
-                $this->processChunk2($chunk, $fixedFields, $dateMap, $monthYear, $inserted, $updated, $errors, $total);
-                $chunk = [];
+
+            if (empty($dateMap)) {
+                fclose($handle);
+                return response()->json(['error' => 'No valid date columns found'], 400);
             }
+
+            // Fixed columns for employee fields
+            $fixedFields = [
+                'process' => 0,
+                'sub_process' => 1,
+                'department' => 2,
+                'emp_id' => 3,
+                'email_id' => 4,
+                'name' => 5,
+                'supervisor_name' => 6,
+                'designation' => 7,
+            ];
+
+            $inserted = 0;
+            $updated = 0;
+            $total = 0;
+
+            // Read in chunks
+            $chunkSize = 100;
+            $chunk = [];
+            $chunkStartCsvRow = $csvRowNumber + 1; // first data row number
+
+            while (($row = fgetcsv($handle)) !== false) {
+                $csvRowNumber++;
+                $chunk[] = $row;
+
+                if (count($chunk) >= $chunkSize) {
+                    $this->processChunk2($chunk, $fixedFields, $dateMap, $monthYear, $inserted, $updated, $errors, $total, $chunkStartCsvRow);
+                    $chunk = [];
+                    $chunkStartCsvRow = $csvRowNumber + 1;
+                }
+            }
+
+            // Process remaining rows
+            if (!empty($chunk)) {
+                $this->processChunk2($chunk, $fixedFields, $dateMap, $monthYear, $inserted, $updated, $errors, $total, $chunkStartCsvRow);
+            }
+
+            fclose($handle);
+
+            return response()->json([
+                'inserted' => $inserted,
+                'updated' => $updated,
+                'errors' => $errors,
+                'total' => $total,
+            ]);
+        } catch (\Throwable $e) {
+            Log::error('Non-CSA upload failed', [
+                'error' => $e->getMessage(),
+                'trace' => $e->getTraceAsString(),
+            ]);
+
+            return response()->json([
+                'error' => 'Non-CSA upload failed: ' . $e->getMessage(),
+            ], 500);
+        } finally {
+            // Restore error reporting to previous values
+            ini_set('display_errors', $prevDisplayErrors);
+            error_reporting($prevErrorReporting);
         }
-    
-        // Process remaining rows
-        if (!empty($chunk)) {
-            $this->processChunk2($chunk, $fixedFields, $dateMap, $monthYear, $inserted, $updated, $errors, $total);
-        }
-    
-        fclose($handle);
-    
-        return response()->json([
-            'inserted' => $inserted,
-            'updated' => $updated,
-            'errors' => $errors,
-            'total' => $total,
-        ]);
     }
     
-    private function processChunk2(&$rows, $fixedFields, $dateMap, $monthYear, &$inserted, &$updated, &$errors, &$total)
+    private function processChunk2(&$rows, $fixedFields, $dateMap, $monthYear, &$inserted, &$updated, &$errors, &$total, int $startCsvRow)
     {
-        foreach ($rows as $row) {
+        foreach ($rows as $i => $row) {
             $total++;
+            $csvRow = $startCsvRow + $i;
     
             $empId = trim($row[$fixedFields['emp_id']] ?? '');
-            if (!$empId) continue;
+            if (!$empId) {
+                $this->pushCsvError($errors, $csvRow, null, 'Missing emp_id', 'emp_id', $row[$fixedFields['emp_id']] ?? null);
+                continue;
+            }
     
             $employee = EmployeeDetails::where('employee_id', $empId)->first();
             if (!$employee) {
-                $errors[] = ['line' => $total, 'employeeId' => $empId, 'message' => 'Employee not found'];
+                $this->pushCsvError($errors, $csvRow, $empId, 'Employee not found');
                 continue;
             }
     
@@ -373,9 +493,18 @@ class AgentAttendanceController extends AccountBaseController
             }
     
             foreach ($dateMap as $dateIndex => $info) {
+                // Ensure attendance + in + out columns exist
+                if (!array_key_exists($dateIndex, $row)) {
+                    $this->pushCsvError($errors, $csvRow, $empId, 'Missing attendance column for date', 'attendance_status', ['date' => $info['date'], 'col' => $dateIndex]);
+                    continue;
+                }
+
                 $attendance = strtoupper(str_replace(' ', '', trim($row[$dateIndex] ?? 'A')));
-                $inTime = $this->validateTime($row[$dateIndex + 1] ?? null);
-                $outTime = $this->validateTime($row[$dateIndex + 2] ?? null);
+                $inRaw = $row[$dateIndex + 1] ?? null;
+                $outRaw = $row[$dateIndex + 2] ?? null;
+
+                $inTime = $this->validateTime($inRaw, $errors, $csvRow, $empId, 'in_time');
+                $outTime = $this->validateTime($outRaw, $errors, $csvRow, $empId, 'out_time');
     
                 $existing = NonCsaAttendance::where('user_id', $employee->user_id)
                     ->where('date', $info['date'])->first();
@@ -401,15 +530,31 @@ class AgentAttendanceController extends AccountBaseController
         }
     }
     
-    private function validateTime($time)
+    private function validateTime($time, array &$errors = [], ?int $csvRow = null, ?string $empId = null, ?string $field = null)
     {
-        if (!$time || strtolower($time) == 'null') return null;
-    
-        $time = trim($time);
+        if (is_null($time)) {
+            return null;
+        }
+
+        $time = trim((string) $time);
+
+        if ($time === '') {
+            return null;
+        }
+
+        // Treat common "empty" markers as null (do not raise validation error)
+        $lower = strtolower($time);
+        if (in_array($lower, ['na', 'n/a', 'null', 'none', '-'], true)) {
+            return null;
+        }
+
         // Accepts format like "10:00 AM" or "14:00"
         try {
             return Carbon::parse($time)->format('H:i:s');
         } catch (\Exception $e) {
+            if (!is_null($csvRow)) {
+                $this->pushCsvError($errors, $csvRow, $empId, 'Invalid time format', $field, $time);
+            }
             return null;
         }
     }

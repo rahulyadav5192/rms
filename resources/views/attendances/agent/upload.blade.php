@@ -8,7 +8,9 @@
 
 <!-- Agent Attendance Upload Form -->
 @if(in_array(auth()->user()->username, ['NIFALPHA','NIF1122045']))
-<div class="col-md-12 mt-4">
+<div class="row">
+
+<div class="col-6 mt-4">
     <div class="dashboard-card">
         <h4 class="text-center text-primary mb-4">Upload CSA Attendance Data (Only For Swiggy/Blinkit)</h4>
         <p class="text-center mb-4">
@@ -43,7 +45,7 @@
 @endif
 @if(in_array(auth()->user()->username, ['NIFALPHA','NIF0924304','NIF0223001','NIF0525298','NIF0721007','NIF1122045','NIF1019001','NIF0123042','NIF0617001','NIF1020003','NIF1019001','NIF0913001','NIF0416001','NIF0123029','NIF1015002','NIF0123030','NIF0114001','NIF0821014']))
 <!-- Non-CSA Attendance Upload Form -->
-<div class="col-md-12 mt-4">
+<div class="col-6 mt-4">
     <div class="dashboard-card">
         <h4 class="text-center text-primary mb-4">Upload Non-CSA Attendance Data</h4>
         <p class="text-center mb-4">
@@ -75,6 +77,8 @@
             <div id="nonCsaDebugInfo" class="mt-2" style="display: none;"></div>
         </div>
     </div>
+</div>
+
 </div>
 @endif
 <style>
@@ -347,24 +351,80 @@
                     } else {
                         nonCsaProgressBar.css('width', '100%').text('100%');
                         updateNonCsaFeedback('Upload completed!').removeClass('text-danger').addClass('text-success');
-                        if (response.inserted) {
-                            nonCsaInsertSummary.html(`<p class="success-item">Total rows inserted: ${response.inserted}</p>`).show();
-                        }
+                        // Always show summary counts (even if 0)
+                        const inserted = (response.inserted !== undefined && response.inserted !== null) ? response.inserted : 0;
+                        const updated = (response.updated !== undefined && response.updated !== null) ? response.updated : 0;
+                        const total = (response.total !== undefined && response.total !== null) ? response.total : 0;
+
+                        nonCsaInsertSummary.html(
+                            `<p class="success-item">Inserted: ${inserted}</p>` +
+                            `<p class="success-item">Updated: ${updated}</p>` +
+                            `<p class="success-item">Rows processed: ${total}</p>`
+                        ).show();
+
                         if (response.errors && response.errors.length) {
                             let errorHtml = '<p class="error-item">Errors encountered:</p>';
                             response.errors.forEach(error => {
-                                errorHtml += `<p class="error-item">Line ${error.line}: Employee ID ${error.employeeId} - ${error.message || 'Not found'}</p>`;
+                                const row = error.row || error.line || 'N/A';
+                                const emp = error.employeeId || 'N/A';
+                                const field = error.field ? ` (${error.field})` : '';
+                                const val = (error.value !== undefined && error.value !== null) ? ` [value: ${error.value}]` : '';
+                                errorHtml += `<p class="error-item">Row ${row}: Employee ID ${emp}${field} - ${error.message || 'Error'}${val}</p>`;
                             });
                             nonCsaErrorList.html(errorHtml).show();
                         }
-                        nonCsaDebugInfo.html(`<p>Total rows processed: ${response.total}</p>`).show();
+                        nonCsaDebugInfo.hide().empty();
                     }
                 },
                 error: function (xhr) {
-                    const response = xhr.responseJSON || { error: 'An unexpected error occurred.' };
-                    updateNonCsaFeedback(response.error, 'error');
+                    // Sometimes PHP warnings/deprecations are printed before JSON, so responseJSON is null.
+                    // Try extracting JSON from the raw responseText.
+                    let response = xhr.responseJSON;
+
+                    if (!response && xhr.responseText) {
+                        try {
+                            const text = xhr.responseText;
+                            const jsonStart = text.indexOf('{');
+                            const jsonEnd = text.lastIndexOf('}');
+                            if (jsonStart !== -1 && jsonEnd !== -1 && jsonEnd > jsonStart) {
+                                response = JSON.parse(text.substring(jsonStart, jsonEnd + 1));
+                            }
+                        } catch (e) {
+                            // ignore parsing errors
+                        }
+                    }
+
+                    response = response || { error: 'An unexpected error occurred.' };
+
+                    updateNonCsaFeedback(response.error || 'An unexpected error occurred.', 'error');
                     nonCsaProgressBar.css('width', '0%').text('0%');
                     console.log('Non-CSA Error Response:', response);
+
+                    // Even on HTTP error (e.g., PHP warnings before JSON), backend may still return counts
+                    if (response.inserted !== undefined || response.updated !== undefined || response.total !== undefined) {
+                        const inserted = (response.inserted !== undefined && response.inserted !== null) ? response.inserted : 0;
+                        const updated = (response.updated !== undefined && response.updated !== null) ? response.updated : 0;
+                        const total = (response.total !== undefined && response.total !== null) ? response.total : 0;
+
+                        nonCsaInsertSummary.html(
+                            `<p class="success-item">Inserted: ${inserted}</p>` +
+                            `<p class="success-item">Updated: ${updated}</p>` +
+                            `<p class="success-item">Rows processed: ${total}</p>`
+                        ).show();
+                    }
+
+                    // If backend sent row-level errors, show them even on HTTP 4xx/5xx
+                    if (response.errors && response.errors.length) {
+                        let errorHtml = '<p class="error-item">Errors encountered:</p>';
+                        response.errors.forEach(error => {
+                            const row = error.row || error.line || 'N/A';
+                            const emp = error.employeeId || 'N/A';
+                            const field = error.field ? ` (${error.field})` : '';
+                            const val = (error.value !== undefined && error.value !== null) ? ` [value: ${error.value}]` : '';
+                            errorHtml += `<p class="error-item">Row ${row}: Employee ID ${emp}${field} - ${error.message || 'Error'}${val}</p>`;
+                        });
+                        nonCsaErrorList.html(errorHtml).show();
+                    }
                 },
                 complete: function () {
                     nonCsaUploadProgress.hide();

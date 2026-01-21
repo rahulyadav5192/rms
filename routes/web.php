@@ -231,9 +231,15 @@ use App\Http\Controllers\ComplaintController;
     
     Route::get('emp_id', [LiveController::class, 'emp_id']);
     Route::get('all_temp', [LiveController::class, 'all_temp']);
-    Route::get('flexi_db', [LiveController::class, 'flexi_db']);
+    // flexi_db (bg job dispatcher)
+    Route::get('flexi_db', [\App\Http\Controllers\FlexiDbJobController::class, 'queueFlexiDb']);
+    // legacy (runs inline, slow) - kept for debugging
+    Route::get('flexi_db_legacy', [LiveController::class, 'flexi_db']);
     
-    Route::get('flexi_db_month', [LiveController::class, 'flexi_db_month']);
+    // flexi_db_month (process full month in background)
+    Route::get('flexi_db_month', [\App\Http\Controllers\FlexiDbJobController::class, 'queueFlexiDbMonth']);
+    // legacy inline version (slow)
+    Route::get('flexi_db_month_legacy', [LiveController::class, 'flexi_db_month']);
     Route::get('flexi_db_month_user/{filterEmpID}', [LiveController::class, 'flexi_db_month_user']);
     // Route::get('flexi_db_month2', [LiveController::class, 'flexi_db_month2']);
     Route::get('attendance_shift_month', [LiveController::class, 'attendance_shift_month']);

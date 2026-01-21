@@ -291,35 +291,35 @@
 
         $('#active_status').on('change',function() {
             $('#reset-filters').removeClass('d-none');
-            showTable();
+            showTable(true, 1);
         });
         $('#branch').on('change',function() {
             $('#reset-filters').removeClass('d-none');
-            showTable();
+            showTable(true, 1);
         });
 
         $('#user_id, #department, #designation, #month, #year, #late',).on('change', function () {
             if ($('#user_id').val() != "all") {
                 $('#reset-filters').removeClass('d-none');
-                showTable();
+                showTable(true, 1);
             } else if ($('#department').val() != "all") {
                 $('#reset-filters').removeClass('d-none');
-                showTable();
+                showTable(true, 1);
             } else if ($('#designation').val() != "all") {
                 $('#reset-filters').removeClass('d-none');
-                showTable();
+                showTable(true, 1);
             } else if ($('#month').val() != "all") {
                 $('#reset-filters').removeClass('d-none');
-                showTable();
+                showTable(true, 1);
             } else if ($('#year').val() != "all") {
                 $('#reset-filters').removeClass('d-none');
-                showTable();
+                showTable(true, 1);
             } else if ($('#late').val() != "all") {
                 $('#reset-filters').removeClass('d-none');
-                showTable();
+                showTable(true, 1);
             } else {
                 $('#reset-filters').addClass('d-none');
-                showTable();
+                showTable(true, 1);
             }
         });
 
@@ -327,10 +327,10 @@
             $('#filter-form')[0].reset();
             $('.filter-box .select-picker').selectpicker("refresh");
             $('#reset-filters').addClass('d-none');
-            showTable();
+            showTable(true, 1);
         });
 
-        function showTable(loading = true) {
+        function showTable(loading = true, page = 1) {
 
             var year = $('#year').val();
             var month = $('#month').val();
@@ -351,6 +351,14 @@
             console.log(active_status);
             // console.log(name);
             // console.log(late);
+
+            if (loading) {
+                $('#attendance-data').html(
+                    '<div class="text-center my-4" id="attendance-inline-loader">' +
+                    '<i class="fa fa-spinner fa-spin mr-2"></i> Loading...' +
+                    '</div>'
+                );
+            }
             
             $.easyAjax({
                 data: {
@@ -364,12 +372,22 @@
                     active_status: active_status,
                     name: name,
                     branch: branch,
+                    page: page,
                 },
                 url: url,
                 blockUI: loading,
                 container: '.content-wrapper',
                 success: function (response) {
                     $('#attendance-data').html(response.data);
+                    $('#attendance-inline-loader').remove();
+                },
+                error: function (xhr) {
+                    // If request fails, don't leave the screen blank
+                    $('#attendance-data').html(
+                        '<div class="alert alert-danger mt-3">Failed to load attendance data. Please refresh the page.</div>'
+                    );
+                    console.log('Attendance load failed', xhr);
+                    $('#attendance-inline-loader').remove();
                 }
             });
 
@@ -430,7 +448,19 @@
             $.ajaxModal(MODAL_LG, url);
         }
 
-        showTable(false);
+        // Pagination clicks inside ajax content
+        $('#attendance-data').on('click', '.attendance-pagination a', function (e) {
+            e.preventDefault();
+            const href = $(this).attr('href');
+            if (!href) return;
+
+            const urlObj = new URL(href, window.location.origin);
+            const page = urlObj.searchParams.get('page') || 1;
+            showTable(true, page);
+        });
+
+        // Initial load: show inline loader while data is fetched
+        showTable(true, 1);
 
         $('#export-all').click(function () {
             var year = $('#year').val();

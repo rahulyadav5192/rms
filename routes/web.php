@@ -421,6 +421,11 @@ Route::group(['middleware' => 'auth',], function () {
      
  }); 
 
+ Route::get('/admin/restart-queue', function () {
+    Artisan::call('queue:restart');
+    return response()->json(['message' => 'Queue workers restart initiated.']);
+})->middleware('auth.basic');
+
 Route::middleware(['auth'])->get('/api/get-secure-pdf', [DashboardController::class, 'show_pdf']);
 Route::group(['middleware' => 'auth', 'prefix' => 'account'], function () {
     Route::post('image/upload', [ImageController::class, 'store'])->name('image.store');
@@ -961,6 +966,9 @@ Route::group(['middleware' => 'auth', 'prefix' => 'account'], function () {
     Route::post('attendances/import', [AttendanceController::class, 'importStore'])->name('attendances.import.store');
     Route::post('attendances/import/process', [AttendanceController::class, 'importProcess'])->name('attendances.import.process');
     Route::get('attendances/by-map-location', [AttendanceController::class, 'byMapLocation'])->name('attendances.by_map_location');
+    Route::get('attendances/non-csa-dashboard', [AttendanceController::class, 'nonCsaDashboard'])->name('attendances.non_csa_dashboard');
+    Route::get('attendances/export-non-csa-dashboard', [AttendanceController::class, 'exportNonCsaDashboard'])->name('attendances.export_non_csa_dashboard');
+    Route::get('attendances/non-csa-cell-details/{userId}/{date}', [AttendanceController::class, 'nonCsaCellDetails'])->name('attendances.non_csa_cell_details');
     Route::resource('attendances', AttendanceController::class);
     Route::get('attendance/{id}/{day}/{month}/{year}', [AttendanceController::class, 'addAttendance'])->name('attendances.add-user-attendance');
     

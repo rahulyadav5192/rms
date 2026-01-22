@@ -16,6 +16,7 @@ use App\Traits\ImportExcel;
 use Illuminate\Http\Request;
 use App\Models\CompanyAddress;
 use App\Exports\AttendanceExport;
+use App\Exports\NonCsaAttendanceDashboardExport;
 use App\Imports\AttendanceImport;
 use App\Jobs\ImportAttendanceJob;
 use App\Models\AttendanceSetting;
@@ -31,6 +32,7 @@ use App\Http\Requests\Admin\Employee\ImportProcessRequest;
 use App\Models\Designation;
 use Maatwebsite\Excel\Concerns\ToArray;
 use Illuminate\Support\Facades\Http;
+use App\Models\NonCsaAttendance;
 
 class AttendanceController extends AccountBaseController
 {
@@ -156,8 +158,29 @@ class AttendanceController extends AccountBaseController
         }
         
         if ($request->name != '') {
-            $employees = $employees->where('users.name', 'LIKE', '%' . $request->name . '%')
-                        ->orWhere('users.username', 'LIKE', '%' . $request->name . '%');
+            // Handle comma-separated names/IDs
+            $nameParts = array_map('trim', explode(',', $request->name));
+            $nameParts = array_filter($nameParts); // Remove empty values
+            
+            if (!empty($nameParts)) {
+                $employees = $employees->where(function($query) use ($nameParts) {
+                    foreach ($nameParts as $part) {
+                        $part = trim($part);
+                        if (empty($part)) continue;
+                        
+                        // Check if it's numeric (could be user ID or employee_id)
+                        if (is_numeric($part)) {
+                            $query->orWhere('users.id', $part)
+                                  ->orWhere('employee_details.employee_id', $part);
+                        } else {
+                            // Search in name, username, or employee_id
+                            $query->orWhere('users.name', 'LIKE', '%' . $part . '%')
+                                  ->orWhere('users.username', 'LIKE', '%' . $part . '%')
+                                  ->orWhere('employee_details.employee_id', 'LIKE', '%' . $part . '%');
+                        }
+                    }
+                });
+            }
         }
         
         if (in_array(auth()->user()->id, [139, 11405,13884,14220])) {
@@ -1778,5 +1801,431 @@ class AttendanceController extends AccountBaseController
         // Get the first row
         $firstRow = $data[0][0];
         dd($firstRow);
+    }
+
+    /**
+     * Non-CSA Attendance Dashboard - Day-wise view for all employees
+     */
+    public function nonCsaDashboard(Request $request)
+    {
+        $this->pageTitle = 'Non-CSA Attendance Dashboard';
+        
+        abort_403(!in_array($this->viewAttendancePermission, ['all', 'added', 'owned', 'both']));
+        
+        // Get filters
+        $year = $request->input('year', Carbon::now()->year);
+        $month = $request->input('month', Carbon::now()->month);
+        $department = $request->input('department', 'all');
+        $branch = $request->input('branch', 'all');
+        $designation = $request->input('designation', 'all');
+        $name = $request->input('name', '');
+        $activeStatus = $request->input('active_status', '');
+        $attendanceType = $request->input('attendance_type', 'all'); // all, missing, short_hours
+        $employeeType = $request->input('employee_type', 'all'); // all, csa, non_csa
+        
+        // Calculate date range
+        $startDate = Carbon::create($year, $month, 1)->startOfMonth();
+        $endDate = Carbon::create($year, $month, 1)->endOfMonth();
+        $daysInMonth = $endDate->day;
+        
+        // Generate all dates in the month
+        $allDates = [];
+        for ($day = 1; $day <= $daysInMonth; $day++) {
+            $date = Carbon::create($year, $month, $day)->format('Y-m-d');
+            $allDates[] = [
+                'date' => $date,
+                'day' => $day,
+                'dayName' => Carbon::create($year, $month, $day)->format('D'),
+            ];
+        }
+        
+        // Get all employees (same logic as main attendance page, but we'll filter non-CSA in the view)
+        // Note: We're not excluding designation_id = 12 here to match main attendance page behavior
+        // The dashboard is meant for Non-CSA but we'll show all employees for consistency
+        $employeesQuery = User::join('role_user', 'role_user.user_id', '=', 'users.id')
+            ->join('roles', 'roles.id', '=', 'role_user.role_id')
+            ->leftJoin('employee_details', 'employee_details.user_id', '=', 'users.id')
+            ->where('roles.name', '<>', 'client')
+            ->select('users.id', 'users.name', 'users.email', 'users.status', 'users.image', 
+                     'employee_details.employee_id', 'employee_details.department_id', 
+                     'employee_details.branch_id', 'employee_details.designation_id')
+            ->groupBy('users.id');
+        
+        // Apply CSA/Non-CSA filter
+        if ($employeeType === 'csa') {
+            $employeesQuery->where('employee_details.designation_id', 12);
+        } elseif ($employeeType === 'non_csa') {
+            $employeesQuery->where(function($query) {
+                $query->where('employee_details.designation_id', '<>', 12)
+                      ->orWhereNull('employee_details.designation_id');
+            });
+        }
+        // If 'all', no filter applied
+        
+        // Apply filters
+        if ($department != 'all') {
+            $employeesQuery->where('employee_details.department_id', $department);
+        }
+        
+        if ($branch != 'all' && $branch != '') {
+            $employeesQuery->where('employee_details.branch_id', $branch);
+        }
+        
+        if ($designation != 'all') {
+            $employeesQuery->where('employee_details.designation_id', $designation);
+        }
+        
+        if ($name != '') {
+            $nameParts = array_map('trim', explode(',', $name));
+            $nameParts = array_filter($nameParts);
+            
+            if (!empty($nameParts)) {
+                $employeesQuery->where(function($query) use ($nameParts) {
+                    foreach ($nameParts as $part) {
+                        $part = trim($part);
+                        if (empty($part)) continue;
+                        
+                        if (is_numeric($part)) {
+                            $query->orWhere('users.id', $part)
+                                  ->orWhere('employee_details.employee_id', $part);
+                        } else {
+                            $query->orWhere('users.name', 'LIKE', '%' . $part . '%')
+                                  ->orWhere('users.username', 'LIKE', '%' . $part . '%')
+                                  ->orWhere('employee_details.employee_id', 'LIKE', '%' . $part . '%');
+                        }
+                    }
+                });
+            }
+        }
+        
+        if ($activeStatus === '0') {
+            $employeesQuery->where('users.status', 'active');
+        } elseif ($activeStatus === '1') {
+            $employeesQuery->where('users.status', 'deactive');
+        }
+        
+        // Apply user-specific restrictions
+        if (in_array(auth()->user()->id, [139, 11405, 13884, 14220])) {
+            $employeesQuery->where('employee_details.branch_id', 7);
+        }
+        if (auth()->user()->id == 11566 || auth()->user()->id == 235) {
+            $employeesQuery->whereIn('employee_details.department_id', [18, 1, 28, 42]);
+        }
+        if (auth()->user()->id == 16531) {
+            $employeesQuery->whereIn('employee_details.department_id', [20]);
+        }
+        
+        // Get employees with pagination (50 per page)
+        // Preserve all query parameters in pagination links
+        $employeesPaginator = $employeesQuery->paginate(50)->appends($request->query());
+        $employees = $employeesPaginator->items();
+        $employeeIds = collect($employees)->pluck('id')->toArray();
+        
+        if (empty($employeeIds)) {
+            $this->employees = collect([]);
+            $this->attendanceData = [];
+            $this->allDates = $allDates;
+            $this->year = $year;
+            $this->month = $month;
+            $this->departments = Team::all();
+            $this->branches = Branch::all();
+            $this->designations = Designation::all();
+            $this->filters = $request->all();
+            $this->summary = [
+                'totalEmployees' => 0,
+                'totalPresentDays' => 0,
+                'totalAbsentDays' => 0,
+                'totalShortHourDays' => 0,
+            ];
+            $this->requiredHours = 9;
+            $this->employeesPaginator = $employeesPaginator;
+            return view('attendances.non_csa_dashboard', $this->data);
+        }
+        
+        // Fetch sheet-based data (NonCsaAttendance) - optimized bulk query
+        $sheetData = NonCsaAttendance::whereIn('user_id', $employeeIds)
+            ->whereBetween('date', [$startDate->toDateString(), $endDate->toDateString()])
+            ->select('user_id', 'date', 'in_time as clock_in', 'out_time as clock_out', 'attendance_status')
+            ->get()
+            ->groupBy('user_id')
+            ->map(function ($records) {
+                return $records->keyBy('date');
+            });
+        
+        // Fetch punch machine data (Attendance) - optimized bulk query
+        $punchData = Attendance::whereIn('user_id', $employeeIds)
+            ->whereBetween('date', [$startDate->toDateString(), $endDate->toDateString()])
+            ->select('user_id', 'date', 'clock_in_time as punch_in', 'clock_out_time as punch_out')
+            ->get()
+            ->groupBy('user_id')
+            ->map(function ($records) {
+                return $records->keyBy('date');
+            });
+        
+        // Build structured attendance array
+        $attendanceData = [];
+        $summary = [
+            'totalEmployees' => count($employees),
+            'totalPresentDays' => 0,
+            'totalAbsentDays' => 0,
+            'totalShortHourDays' => 0,
+        ];
+        
+        $requiredHours = 9; // Default required hours
+        
+        foreach ($employees as $employee) {
+            $empId = $employee->id;
+            $attendanceData[$empId] = [
+                'employee' => $employee,
+                'dates' => [],
+                'summary' => [
+                    'present_days' => 0,
+                    'absent_days' => 0,
+                    'short_hour_days' => 0,
+                ],
+            ];
+            
+            foreach ($allDates as $dateInfo) {
+                $date = $dateInfo['date'];
+                
+                // Get sheet data
+                $sheetRecord = $sheetData[$empId][$date] ?? null;
+                $clockIn = $sheetRecord ? ($sheetRecord->clock_in ?? null) : null;
+                $clockOut = $sheetRecord ? ($sheetRecord->clock_out ?? null) : null;
+                $attendanceStatus = $sheetRecord ? ($sheetRecord->attendance_status ?? null) : null;
+                
+                // Get punch data
+                $punchRecord = $punchData[$empId][$date] ?? null;
+                $punchIn = $punchRecord ? ($punchRecord->punch_in ?? null) : null;
+                $punchOut = $punchRecord ? ($punchRecord->punch_out ?? null) : null;
+                
+                // Calculate total hours from sheet data
+                $totalHours = 0;
+                if ($clockIn && $clockOut) {
+                    try {
+                        $inTime = Carbon::parse($clockIn);
+                        $outTime = Carbon::parse($clockOut);
+                        if ($outTime->greaterThan($inTime)) {
+                            $totalHours = $outTime->floatDiffInHours($inTime);
+                        }
+                    } catch (\Exception $e) {
+                        // Invalid time format
+                    }
+                }
+                
+                // Calculate total hours from punch data
+                $punchHours = 0;
+                if ($punchIn && $punchOut) {
+                    try {
+                        $punchInTime = Carbon::parse($punchIn);
+                        $punchOutTime = Carbon::parse($punchOut);
+                        if ($punchOutTime->greaterThan($punchInTime)) {
+                            $punchHours = $punchOutTime->floatDiffInHours($punchInTime);
+                        }
+                    } catch (\Exception $e) {
+                        // Invalid time format
+                    }
+                }
+                
+                // Determine status
+                $isPresent = !empty($clockIn) && !empty($clockOut);
+                $isShortHours = $isPresent && $totalHours > 0 && $totalHours < $requiredHours;
+                $isMissing = empty($clockIn) || empty($clockOut);
+                $isAbsent = !$isPresent && empty($attendanceStatus);
+                
+                // Determine cell status for filtering
+                $cellStatus = 'normal';
+                if ($isMissing) {
+                    $cellStatus = 'missing';
+                } elseif ($isShortHours) {
+                    $cellStatus = 'short_hours';
+                } elseif ($isAbsent) {
+                    $cellStatus = 'absent';
+                } elseif ($isPresent && $totalHours >= $requiredHours) {
+                    $cellStatus = 'full_day';
+                }
+                
+                // Apply attendance type filter
+                $showCell = true;
+                if ($attendanceType === 'missing' && $cellStatus !== 'missing') {
+                    $showCell = false;
+                } elseif ($attendanceType === 'short_hours' && $cellStatus !== 'short_hours') {
+                    $showCell = false;
+                }
+                
+                if (!$showCell) {
+                    continue;
+                }
+                
+                $attendanceData[$empId]['dates'][$date] = [
+                    'clock_in' => $clockIn,
+                    'clock_out' => $clockOut,
+                    'punch_in' => $punchIn,
+                    'punch_out' => $punchOut,
+                    'total_hours' => $totalHours,
+                    'punch_hours' => $punchHours,
+                    'status' => $attendanceStatus,
+                    'cell_status' => $cellStatus,
+                    'is_present' => $isPresent,
+                    'is_short_hours' => $isShortHours,
+                    'is_missing' => $isMissing,
+                    'is_absent' => $isAbsent,
+                ];
+                
+                // Update summary
+                if ($isPresent) {
+                    $attendanceData[$empId]['summary']['present_days']++;
+                    $summary['totalPresentDays']++;
+                } else {
+                    $attendanceData[$empId]['summary']['absent_days']++;
+                    $summary['totalAbsentDays']++;
+                }
+                
+                if ($isShortHours) {
+                    $attendanceData[$empId]['summary']['short_hour_days']++;
+                    $summary['totalShortHourDays']++;
+                }
+            }
+        }
+        
+        // Filter employees based on attendance type if needed
+        if ($attendanceType !== 'all') {
+            $filteredAttendanceData = [];
+            $filteredEmployeeIds = [];
+            foreach ($attendanceData as $empId => $data) {
+                $hasMatchingDays = false;
+                foreach ($data['dates'] as $date => $dayData) {
+                    if (($attendanceType === 'missing' && $dayData['is_missing']) ||
+                        ($attendanceType === 'short_hours' && $dayData['is_short_hours'])) {
+                        $hasMatchingDays = true;
+                        break;
+                    }
+                }
+                if ($hasMatchingDays) {
+                    $filteredAttendanceData[$empId] = $data;
+                    $filteredEmployeeIds[] = $empId;
+                }
+            }
+            $attendanceData = $filteredAttendanceData;
+            // Filter employees list to match filtered data (keep as collection)
+            $employees = collect($employees)->whereIn('id', $filteredEmployeeIds)->values();
+        }
+        
+        // Assign all data to $this->data properties
+        $this->employees = collect($employees);
+        $this->attendanceData = $attendanceData;
+        $this->allDates = $allDates;
+        $this->year = $year;
+        $this->month = $month;
+        $this->departments = Team::all();
+        $this->branches = Branch::all();
+        $this->designations = Designation::all();
+        $this->filters = $request->all();
+        $this->summary = $summary;
+        $this->requiredHours = $requiredHours;
+        $this->employeesPaginator = $employeesPaginator;
+        $this->employeeType = $employeeType;
+        
+        return view('attendances.non_csa_dashboard', $this->data);
+    }
+
+    /**
+     * Export Non-CSA Attendance Dashboard data
+     */
+    public function exportNonCsaDashboard(Request $request)
+    {
+        $year = $request->input('year', Carbon::now()->year);
+        $month = $request->input('month', Carbon::now()->month);
+        $department = $request->input('department', 'all');
+        $branch = $request->input('branch', 'all');
+        $designation = $request->input('designation', 'all');
+        $name = $request->input('name', '');
+        $activeStatus = $request->input('active_status', '');
+        $employeeType = $request->input('employee_type', 'all');
+        
+        $monthName = Carbon::create($year, $month)->format('F');
+        $fileName = 'Non_CSA_Attendance_' . $monthName . '_' . $year . '.xlsx';
+        
+        return Excel::download(
+            new NonCsaAttendanceDashboardExport($year, $month, $department, $branch, $designation, $name, $activeStatus, $employeeType),
+            $fileName
+        );
+    }
+
+    /**
+     * Get attendance cell details with biometric logs (AJAX)
+     */
+    public function nonCsaCellDetails($userId, $date)
+    {
+        $user = User::with('employeeDetail')->findOrFail($userId);
+        $dateObj = Carbon::parse($date);
+        
+        // Get sheet-based attendance data
+        $sheetData = NonCsaAttendance::where('user_id', $userId)
+            ->where('date', $date)
+            ->first();
+        
+        // Get punch machine data
+        $punchData = Attendance::where('user_id', $userId)
+            ->where('date', $date)
+            ->first();
+        
+        // Calculate hours
+        $sheetHours = 0;
+        if ($sheetData && $sheetData->in_time && $sheetData->out_time) {
+            try {
+                $inTime = Carbon::parse($sheetData->in_time);
+                $outTime = Carbon::parse($sheetData->out_time);
+                if ($outTime->greaterThan($inTime)) {
+                    $sheetHours = $outTime->floatDiffInHours($inTime);
+                }
+            } catch (\Exception $e) {
+                // Invalid time format
+            }
+        }
+        
+        $punchHours = 0;
+        if ($punchData && $punchData->clock_in_time && $punchData->clock_out_time) {
+            try {
+                $punchIn = Carbon::parse($punchData->clock_in_time);
+                $punchOut = Carbon::parse($punchData->clock_out_time);
+                if ($punchOut->greaterThan($punchIn)) {
+                    $punchHours = $punchOut->floatDiffInHours($punchIn);
+                }
+            } catch (\Exception $e) {
+                // Invalid time format
+            }
+        }
+        
+        // Get biometric logs from att_temp table
+        $biometricLogs = [];
+        if ($user->employeeDetail && $user->employeeDetail->bio_machine_id && $user->employeeDetail->bio_uid) {
+            $biometricLogs = DB::table('att_temp')
+                ->where('ip', $user->employeeDetail->bio_machine_id)
+                ->where('id', $user->employeeDetail->bio_uid)
+                ->whereDate('timestamp', $date)
+                ->orderBy('timestamp', 'asc')
+                ->select('timestamp')
+                ->get()
+                ->map(function ($log) {
+                    return [
+                        'timestamp' => Carbon::parse($log->timestamp)->format('Y-m-d H:i:s'),
+                        'time' => Carbon::parse($log->timestamp)->format('H:i:s'),
+                    ];
+                });
+        }
+        
+        $html = view('attendances.ajax.cell_details', [
+            'user' => $user,
+            'date' => $date,
+            'dateFormatted' => $dateObj->format('d-M-Y'),
+            'sheetData' => $sheetData,
+            'punchData' => $punchData,
+            'sheetHours' => $sheetHours,
+            'punchHours' => $punchHours,
+            'biometricLogs' => $biometricLogs,
+        ])->render();
+        
+        return Reply::successWithData('Data loaded', ['html' => $html]);
     }
 }

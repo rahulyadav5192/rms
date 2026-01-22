@@ -341,54 +341,54 @@ class AgentAttendanceController extends AccountBaseController
         error_reporting($prevErrorReporting & ~E_DEPRECATED);
 
         try {
-            if (!$request->hasFile('attendance_file')) {
-                return response()->json(['error' => 'No file uploaded'], 400);
-            }
-
-            $file = $request->file('attendance_file');
+        if (!$request->hasFile('attendance_file')) {
+            return response()->json(['error' => 'No file uploaded'], 400);
+        }
+    
+        $file = $request->file('attendance_file');
             if (!$file->isValid()) {
                 return response()->json(['error' => 'Invalid file upload'], 400);
             }
 
-            $monthYear = $request->input('month_year', 'Apr-2025');
-
-            $handle = fopen($file->getRealPath(), 'r');
-            if (!$handle) {
-                return response()->json(['error' => 'Unable to open file'], 400);
-            }
+        $monthYear = $request->input('month_year', 'Apr-2025');
+    
+        $handle = fopen($file->getRealPath(), 'r');
+        if (!$handle) {
+            return response()->json(['error' => 'Unable to open file'], 400);
+        }
 
             $errors = [];
 
             // CSV row numbers start at 1. We will read two header rows first.
             $csvRowNumber = 0;
-
-            // First row (Week and Dates)
-            $firstRow = fgetcsv($handle);
+    
+        // First row (Week and Dates)
+        $firstRow = fgetcsv($handle);
             $csvRowNumber++;
 
-            if (!$firstRow) {
+        if (!$firstRow) {
                 fclose($handle);
-                return response()->json(['error' => 'Missing date row'], 400);
-            }
-
-            // Second row (column headers with week ranges and attendance headers)
-            $secondRow = fgetcsv($handle);
+            return response()->json(['error' => 'Missing date row'], 400);
+        }
+    
+        // Second row (column headers with week ranges and attendance headers)
+        $secondRow = fgetcsv($handle);
             $csvRowNumber++;
 
-            if (!$secondRow) {
+        if (!$secondRow) {
                 fclose($handle);
-                return response()->json(['error' => 'Missing header row'], 400);
-            }
+            return response()->json(['error' => 'Missing header row'], 400);
+        }
+    
+        // Mapping date column indexes to their respective date and week number
+        $dateMap = []; // [index => ['date' => Y-m-d, 'week' => Week-XX]]
+        $currentWeek = null;
 
-            // Mapping date column indexes to their respective date and week number
-            $dateMap = []; // [index => ['date' => Y-m-d, 'week' => Week-XX]]
-            $currentWeek = null;
-
-            foreach ($firstRow as $index => $value) {
+        foreach ($firstRow as $index => $value) {
                 $cell = trim((string) $value);
 
-                if (preg_match('/^Week-\d+$/i', $cell)) {
-                    $currentWeek = $cell;
+            if (preg_match('/^Week-\d+$/i', $cell)) {
+                $currentWeek = $cell;
                     continue;
                 }
 
@@ -400,59 +400,59 @@ class AgentAttendanceController extends AccountBaseController
                 } elseif ($cell !== '' && str_contains($cell, ',')) {
                     // Likely a date-like string but failed parsing
                     $this->pushCsvError($errors, 1, null, 'Invalid date header format', 'date_header', $cell);
-                }
             }
-
-            if (empty($dateMap)) {
+        }
+    
+        if (empty($dateMap)) {
                 fclose($handle);
-                return response()->json(['error' => 'No valid date columns found'], 400);
-            }
-
+            return response()->json(['error' => 'No valid date columns found'], 400);
+        }
+    
             // Fixed columns for employee fields
-            $fixedFields = [
-                'process' => 0,
-                'sub_process' => 1,
-                'department' => 2,
-                'emp_id' => 3,
-                'email_id' => 4,
-                'name' => 5,
-                'supervisor_name' => 6,
-                'designation' => 7,
-            ];
-
-            $inserted = 0;
-            $updated = 0;
-            $total = 0;
-
-            // Read in chunks
-            $chunkSize = 100;
-            $chunk = [];
+        $fixedFields = [
+            'process' => 0,
+            'sub_process' => 1,
+            'department' => 2,
+            'emp_id' => 3,
+            'email_id' => 4,
+            'name' => 5,
+            'supervisor_name' => 6,
+            'designation' => 7,
+        ];
+    
+        $inserted = 0;
+        $updated = 0;
+        $total = 0;
+    
+        // Read in chunks
+        $chunkSize = 100;
+        $chunk = [];
             $chunkStartCsvRow = $csvRowNumber + 1; // first data row number
-
-            while (($row = fgetcsv($handle)) !== false) {
+    
+        while (($row = fgetcsv($handle)) !== false) {
                 $csvRowNumber++;
-                $chunk[] = $row;
+            $chunk[] = $row;
 
-                if (count($chunk) >= $chunkSize) {
+            if (count($chunk) >= $chunkSize) {
                     $this->processChunk2($chunk, $fixedFields, $dateMap, $monthYear, $inserted, $updated, $errors, $total, $chunkStartCsvRow);
-                    $chunk = [];
+                $chunk = [];
                     $chunkStartCsvRow = $csvRowNumber + 1;
-                }
             }
-
-            // Process remaining rows
-            if (!empty($chunk)) {
+        }
+    
+        // Process remaining rows
+        if (!empty($chunk)) {
                 $this->processChunk2($chunk, $fixedFields, $dateMap, $monthYear, $inserted, $updated, $errors, $total, $chunkStartCsvRow);
-            }
-
-            fclose($handle);
-
-            return response()->json([
-                'inserted' => $inserted,
-                'updated' => $updated,
-                'errors' => $errors,
-                'total' => $total,
-            ]);
+        }
+    
+        fclose($handle);
+    
+        return response()->json([
+            'inserted' => $inserted,
+            'updated' => $updated,
+            'errors' => $errors,
+            'total' => $total,
+        ]);
         } catch (\Throwable $e) {
             Log::error('Non-CSA upload failed', [
                 'error' => $e->getMessage(),

@@ -214,6 +214,9 @@ $debugMsg = "Menu Check for User {$userId}: formFilled={$formFilled}, unaccepted
                 @if(in_array(auth()->user()->username, ['NIFALPHA','NIF0924304','NIF0223001','NIF0525298','NIF1122045','NIF0721007','NIF1019001','NIF0123042','NIF0617001','NIF1020003','NIF1019001','NIF0913001','NIF0416001','NIF0123029','NIF1015002','NIF0123030','NIF0114001','NIF0821014']))
                 <x-sub-menu-item :link="url('/agent/attendance/upload')" :text="__('Attendance Upload')" />
                 @endif
+                @if(in_array('attendance', user_modules()) && user()->permission('view_attendance') != 5 && user()->permission('view_attendance') != 'none')
+                <x-sub-menu-item :link="route('attendances.non_csa_dashboard')" :text="__('Non-CSA Attendance')" />
+                @endif
             </div>
         </x-menu-item>
     @endif

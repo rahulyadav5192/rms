@@ -48,16 +48,26 @@ class FlexiDbJobController extends Controller
         $now = Carbon::now();
         $year = (int) ($request->query('year') ?: $now->format('Y'));
         $month = (int) ($request->query('month') ?: $now->subDay()->format('m'));
+        $startDay = $request->query('start_day');
+        $endDay = $request->query('end_day');
 
         $requestId = (string) Str::uuid();
 
-        ProcessFlexiDbMonthJob::dispatch($year, $month, $requestId);
+        ProcessFlexiDbMonthJob::dispatch(
+            $year,
+            $month,
+            $requestId,
+            is_null($startDay) ? null : (int) $startDay,
+            is_null($endDay) ? null : (int) $endDay
+        );
 
         return response()->json([
             'queued' => true,
             'requestId' => $requestId,
             'year' => $year,
             'month' => $month,
+            'start_day' => is_null($startDay) ? null : (int) $startDay,
+            'end_day' => is_null($endDay) ? null : (int) $endDay,
         ]);
     }
 }

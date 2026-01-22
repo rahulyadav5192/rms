@@ -110,8 +110,29 @@ class AttendanceExport implements FromCollection, WithHeadings, WithMapping, Wit
         }
         
         if ($this->name != '' && $this->name != 'NO') {
-            $employees->where('users.name', 'LIKE', '%' . $this->name . '%')
-                        ->orWhere('users.username', 'LIKE', '%' . $this->name . '%');
+            // Handle comma-separated names/IDs
+            $nameParts = array_map('trim', explode(',', $this->name));
+            $nameParts = array_filter($nameParts); // Remove empty values
+            
+            if (!empty($nameParts)) {
+                $employees->where(function($query) use ($nameParts) {
+                    foreach ($nameParts as $part) {
+                        $part = trim($part);
+                        if (empty($part)) continue;
+                        
+                        // Check if it's numeric (could be user ID or employee_id)
+                        if (is_numeric($part)) {
+                            $query->orWhere('users.id', $part)
+                                  ->orWhere('employee_details.employee_id', $part);
+                        } else {
+                            // Search in name, username, or employee_id
+                            $query->orWhere('users.name', 'LIKE', '%' . $part . '%')
+                                  ->orWhere('users.username', 'LIKE', '%' . $part . '%')
+                                  ->orWhere('employee_details.employee_id', 'LIKE', '%' . $part . '%');
+                        }
+                    }
+                });
+            }
         }
         if ($this->branch != 'all' && $this->branch != '') {
             $employees->where('employee_details.branch_id', $this->branch);

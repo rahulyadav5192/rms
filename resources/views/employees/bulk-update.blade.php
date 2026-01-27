@@ -60,7 +60,7 @@ textarea.form-control {
             <div class="mb-4">
                 <h3 class="fw-bold mb-1">Bulk Update Employees</h3>
                 <p class="text-muted mb-0">
-                    Update branch, department, or designation for multiple employees at once.
+                    Update employee information for multiple employees at once. All fields are optional - only selected fields will be updated.
                 </p>
             </div>
 
@@ -102,11 +102,12 @@ textarea.form-control {
                         </div>
 
                         <div class="row g-4">
+                            {{-- Row 1 --}}
                             {{-- Branch --}}
-                            <div class="col-6">
-                                <label class="form-label fw-semibold">Branch</label>
-                                <select name="branch_id" class="form-select modern-select" required>
-                                    <option value="">Select Branch</option>
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold mb-2">Branch</label>
+                                <select name="branch_id" class="form-select modern-select w-100">
+                                    <option value="">Select Branch (Optional)</option>
                                     @foreach($branches as $branch)
                                         <option value="{{ $branch->id }}">
                                             {{ $branch->name }}
@@ -116,10 +117,10 @@ textarea.form-control {
                             </div>
 
                             {{-- Department --}}
-                            <div class="col-6">
-                                <label class="form-label fw-semibold">Department</label>
-                                <select name="department_id" class="form-select modern-select" required>
-                                    <option value="">Select Department</option>
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold mb-2">Department</label>
+                                <select name="department_id" class="form-select modern-select w-100">
+                                    <option value="">Select Department (Optional)</option>
                                     @foreach($departments as $department)
                                         <option value="{{ $department->id }}">
                                             {{ $department->team_name }}
@@ -128,16 +129,63 @@ textarea.form-control {
                                 </select>
                             </div>
 
+                            {{-- Row 2 --}}
                             {{-- Designation --}}
-                            <div class="col-12 mt-5">
-                                <label class="form-label fw-semibold">Designation</label>
-                                <select name="designation_id" class="form-select modern-select" required>
-                                    <option value="">Select Designation</option>
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold mb-2">Designation</label>
+                                <select name="designation_id" class="form-select modern-select w-100">
+                                    <option value="">Select Designation (Optional)</option>
                                     @foreach($designations as $designation)
                                         <option value="{{ $designation->id }}">
                                             {{ $designation->name }}
                                         </option>
                                     @endforeach
+                                </select>
+                            </div>
+
+                            {{-- Employment Type --}}
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold mb-2">Employment Type</label>
+                                <select name="employment_type" class="form-select modern-select w-100">
+                                    <option value="">Select Employment Type (Optional)</option>
+                                    <option value="full_time">Full Time</option>
+                                    <option value="part_time">Part Time</option>
+                                    <option value="on_contract">On Contract</option>
+                                    <option value="internship">Internship</option>
+                                    <option value="trainee">Trainee</option>
+                                </select>
+                            </div>
+
+                            {{-- Row 3 --}}
+                            {{-- Office Type --}}
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold mb-2">Office Type</label>
+                                <select name="office_type" class="form-select modern-select w-100">
+                                    <option value="">Select Office Type (Optional)</option>
+                                    <option value="wfo">WFO (Work From Office)</option>
+                                    <option value="wfh">WFH (Work From Home)</option>
+                                </select>
+                            </div>
+
+                            {{-- Gender --}}
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold mb-2">Gender</label>
+                                <select name="gender" class="form-select modern-select w-100">
+                                    <option value="">Select Gender (Optional)</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="others">Others</option>
+                                </select>
+                            </div>
+
+                            {{-- Row 4 --}}
+                            {{-- Status --}}
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold mb-2">Status</label>
+                                <select name="status" class="form-select modern-select w-100">
+                                    <option value="">Select Status (Optional)</option>
+                                    <option value="active">Active</option>
+                                    <option value="deactive">Inactive</option>
                                 </select>
                             </div>
                         </div>

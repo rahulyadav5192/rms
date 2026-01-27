@@ -74,8 +74,19 @@ class FortifyServiceProvider extends ServiceProvider
                 ->where('username', $request->email)
                 ->first();
 
+            // Check if user record exists
+            if (!$user) {
+                throw ValidationException::withMessages([
+                    'email' => 'No matching record was found. Please contact the HR department for clarification.'
+                ]);
+            }
 
-            if ($user && Hash::check($request->password, $user->password)) {
+            // Check password - if wrong, show custom error message
+            if (!Hash::check($request->password, $user->password)) {
+                throw ValidationException::withMessages([
+                    'email' => 'Wrong password. Please contact the HR department for clarification.'
+                ]);
+            }
 
                 if ($user->status === 'deactive') {
                     throw ValidationException::withMessages([
@@ -90,7 +101,6 @@ class FortifyServiceProvider extends ServiceProvider
                 }
 
                 return $user;
-            }
         });
 
 

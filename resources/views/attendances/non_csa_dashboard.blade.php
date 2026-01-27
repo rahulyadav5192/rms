@@ -462,7 +462,7 @@
             <div class="select-status">
                 <select class="form-control select-picker" name="active_status" id="active_status">
                     <option value="" {{ request('active_status') === '' ? 'selected' : '' }}>@lang('app.all')</option>
-                    <option value="0" {{ request('active_status') == '0' ? 'selected' : '' }}>@lang('app.active')</option>
+                    <option value="0" {{ request('active_status') == '0' || (!request()->has('active_status')) ? 'selected' : '' }}>@lang('app.active')</option>
                     <option value="1" {{ request('active_status') == '1' ? 'selected' : '' }}>@lang('app.inactive')</option>
                 </select>
             </div>
@@ -557,7 +557,10 @@
                                                 $empSummary = $empData['summary'] ?? ['present_days' => 0, 'absent_days' => 0, 'short_hour_days' => 0];
                                             @endphp
                                             <tr>
-                                                <td class="employee-name-cell">
+                                                <td class="employee-name-cell"
+                                                    data-user-id="{{ $employee->id }}"
+                                                    data-employee-name="{{ $employee->name }}"
+                                                    data-employee-id="{{ $employee->employee_id ?? '' }}">
                                                     @if($employee->image)
                                                         <img src="{{ asset('user-uploads/avatar/' . $employee->image) }}" 
                                                              alt="{{ $employee->name }}" class="employee-avatar">
@@ -687,7 +690,7 @@
             window.location.href = '{{ route("attendances.non_csa_dashboard") }}';
         });
 
-        // Handle cell click to show modal
+        // Handle day cell click to show per-day modal
         $(document).on('click', '.attendance-cell', function() {
             var userId = $(this).data('user-id');
             var date = $(this).data('date');
@@ -720,6 +723,50 @@
                 }
             });
         });
+
+        // Handle employee name click to show full month details
+        $(document).on('click', '.employee-name-cell', function() {
+            var userId = $(this).data('user-id');
+            var employeeName = $(this).data('employee-name');
+            var employeeId = $(this).data('employee-id');
+
+            if (!userId) return;
+
+            var url = "{{ route('attendances.non_csa_employee_month_details', ':userId') }}";
+            url = url.replace(':userId', userId);
+
+            var month = $('#month').val();
+            var year = $('#year').val();
+
+            $('#attendanceEmployeeMonthModal .modal-title').html(
+                'Monthly Attendance - ' + employeeName + (employeeId ? ' (' + employeeId + ')' : '')
+            );
+            $('#attendanceEmployeeMonthModal .modal-body').html(
+                '<div class="text-center py-4"><i class="fa fa-spinner fa-spin"></i> Loading...</div>'
+            );
+            $('#attendanceEmployeeMonthModal').modal('show');
+
+            $.easyAjax({
+                url: url,
+                type: "GET",
+                data: {
+                    month: month,
+                    year: year
+                },
+                blockUI: true,
+                container: '#attendanceEmployeeMonthModal',
+                success: function (response) {
+                    if (response.status == 'success') {
+                        $('#attendanceEmployeeMonthModal .modal-body').html(response.html);
+                    } else {
+                        $('#attendanceEmployeeMonthModal .modal-body').html('<div class="alert alert-danger">Failed to load data.</div>');
+                    }
+                },
+                error: function() {
+                    $('#attendanceEmployeeMonthModal .modal-body').html('<div class="alert alert-danger">Error loading data.</div>');
+                }
+            });
+        });
     });
 </script>
 @endpush
@@ -746,3 +793,24 @@
     </div>
 </div>
 
+<!-- Employee Month Details Modal -->
+<div class="modal fade" id="attendanceEmployeeMonthModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Monthly Attendance</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="text-center py-4">
+                    <i class="fa fa-spinner fa-spin"></i> Loading...
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

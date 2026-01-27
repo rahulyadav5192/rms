@@ -1819,7 +1819,7 @@ class AttendanceController extends AccountBaseController
         $branch = $request->input('branch', 'all');
         $designation = $request->input('designation', 'all');
         $name = $request->input('name', '');
-        $activeStatus = $request->input('active_status', '');
+        $activeStatus = $request->input('active_status', '0'); // Default to '0' (active)
         $attendanceType = $request->input('attendance_type', 'all'); // all, missing, short_hours
         $employeeType = $request->input('employee_type', 'all'); // all, csa, non_csa
         
@@ -1842,10 +1842,14 @@ class AttendanceController extends AccountBaseController
         // Get all employees (same logic as main attendance page, but we'll filter non-CSA in the view)
         // Note: We're not excluding designation_id = 12 here to match main attendance page behavior
         // The dashboard is meant for Non-CSA but we'll show all employees for consistency
-        $employeesQuery = User::join('role_user', 'role_user.user_id', '=', 'users.id')
+        // Remove ActiveScope to allow filtering by status (active/inactive)
+        // Exclude super admin (user ID 1)
+        $employeesQuery = User::withoutGlobalScope(\App\Scopes\ActiveScope::class)
+            ->join('role_user', 'role_user.user_id', '=', 'users.id')
             ->join('roles', 'roles.id', '=', 'role_user.role_id')
             ->leftJoin('employee_details', 'employee_details.user_id', '=', 'users.id')
             ->where('roles.name', '<>', 'client')
+            ->where('users.id', '<>', 1) // Exclude super admin
             ->select('users.id', 'users.name', 'users.email', 'users.status', 'users.image', 
                      'employee_details.employee_id', 'employee_details.department_id', 
                      'employee_details.branch_id', 'employee_details.designation_id')
@@ -1898,11 +1902,16 @@ class AttendanceController extends AccountBaseController
             }
         }
         
-        if ($activeStatus === '0') {
+        // Apply status filter
+        // active_status: '' = all, '0' = active, '1' = inactive
+        if ($activeStatus == '0') {
+            // Filter for active users only
             $employeesQuery->where('users.status', 'active');
-        } elseif ($activeStatus === '1') {
+        } elseif ($activeStatus == '1') {
+            // Filter for inactive users only
             $employeesQuery->where('users.status', 'deactive');
         }
+        // If $activeStatus is empty or 'all', show all users (no filter applied)
         
         // Apply user-specific restrictions
         if (in_array(auth()->user()->id, [139, 11405, 13884, 14220])) {
@@ -2226,6 +2235,97 @@ class AttendanceController extends AccountBaseController
             'biometricLogs' => $biometricLogs,
         ])->render();
         
+        return Reply::successWithData('Data loaded', ['html' => $html]);
+    }
+
+    /**
+     * Get full month attendance details for a single employee (AJAX)
+     */
+    public function nonCsaEmployeeMonthDetails(Request $request, $userId)
+    {
+        abort_403(!in_array($this->viewAttendancePermission, ['all', 'added', 'owned', 'both']));
+
+        $year = (int) $request->input('year', Carbon::now()->year);
+        $month = (int) $request->input('month', Carbon::now()->month);
+
+        $user = User::with('employeeDetail')->findOrFail($userId);
+
+        $startDate = Carbon::create($year, $month, 1)->startOfMonth();
+        $endDate = Carbon::create($year, $month, 1)->endOfMonth();
+
+        // Preload sheet and punch data for the whole month
+        $sheetData = NonCsaAttendance::where('user_id', $userId)
+            ->whereBetween('date', [$startDate->toDateString(), $endDate->toDateString()])
+            ->select('date', 'in_time', 'out_time', 'attendance_status')
+            ->get()
+            ->keyBy('date');
+
+        $punchData = Attendance::where('user_id', $userId)
+            ->whereBetween('date', [$startDate->toDateString(), $endDate->toDateString()])
+            ->select('date', 'clock_in_time', 'clock_out_time')
+            ->get()
+            ->keyBy('date');
+
+        $days = [];
+
+        $cursor = $startDate->copy();
+        while ($cursor->lte($endDate)) {
+            $date = $cursor->toDateString();
+            $sheet = $sheetData->get($date);
+            $punch = $punchData->get($date);
+
+            // Sheet hours
+            $sheetHours = 0;
+            if ($sheet && $sheet->in_time && $sheet->out_time) {
+                try {
+                    $inTime = Carbon::parse($sheet->in_time);
+                    $outTime = Carbon::parse($sheet->out_time);
+                    if ($outTime->greaterThan($inTime)) {
+                        $sheetHours = $outTime->floatDiffInHours($inTime);
+                    }
+                } catch (\Exception $e) {
+                    $sheetHours = 0;
+                }
+            }
+
+            // Punch hours
+            $punchHours = 0;
+            if ($punch && $punch->clock_in_time && $punch->clock_out_time) {
+                try {
+                    $punchIn = Carbon::parse($punch->clock_in_time);
+                    $punchOut = Carbon::parse($punch->clock_out_time);
+                    if ($punchOut->greaterThan($punchIn)) {
+                        $punchHours = $punchOut->floatDiffInHours($punchIn);
+                    }
+                } catch (\Exception $e) {
+                    $punchHours = 0;
+                }
+            }
+
+            $days[] = [
+                'date' => $date,
+                'dateFormatted' => $cursor->format('d M Y (D)'),
+                'clock_in' => $sheet->in_time ?? null,
+                'clock_out' => $sheet->out_time ?? null,
+                'sheet_hours' => $sheetHours,
+                'punch_in' => $punch->clock_in_time ?? null,
+                'punch_out' => $punch->clock_out_time ?? null,
+                'punch_hours' => $punchHours,
+            ];
+
+            $cursor->addDay();
+        }
+
+        $monthLabel = Carbon::create($year, $month, 1)->format('F Y');
+
+        $html = view('attendances.ajax.employee_month_details', [
+            'user' => $user,
+            'year' => $year,
+            'month' => $month,
+            'monthLabel' => $monthLabel,
+            'days' => $days,
+        ])->render();
+
         return Reply::successWithData('Data loaded', ['html' => $html]);
     }
 }

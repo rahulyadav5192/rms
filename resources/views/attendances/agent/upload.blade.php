@@ -236,7 +236,7 @@
                         updateAgentFeedback(response.error, 'error');
                     } else {
                         agentProgressBar.css('width', '100%').text('100%');
-                        updateAgentFeedback('Upload completed!').removeClass('text-danger').addClass('text-success');
+                        updateAgentFeedback('Upload completed!', 'success');
                         if (response.inserted) {
                             agentInsertSummary.html(`<p class="success-item">Total rows inserted: ${response.inserted}</p>`).show();
                         }
@@ -350,7 +350,7 @@
                         updateNonCsaFeedback(response.error, 'error');
                     } else {
                         nonCsaProgressBar.css('width', '100%').text('100%');
-                        updateNonCsaFeedback('Upload completed!').removeClass('text-danger').addClass('text-success');
+                        updateNonCsaFeedback('Upload completed!', 'success');
                         // Always show summary counts (even if 0)
                         const inserted = (response.inserted !== undefined && response.inserted !== null) ? response.inserted : 0;
                         const updated = (response.updated !== undefined && response.updated !== null) ? response.updated : 0;

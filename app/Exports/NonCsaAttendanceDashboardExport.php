@@ -55,10 +55,12 @@ class NonCsaAttendanceDashboardExport implements FromCollection, WithHeadings, W
         }
         
         // Build employee query (same as controller)
+        // Exclude super admin (user ID 1)
         $employeesQuery = User::join('role_user', 'role_user.user_id', '=', 'users.id')
             ->join('roles', 'roles.id', '=', 'role_user.role_id')
             ->leftJoin('employee_details', 'employee_details.user_id', '=', 'users.id')
             ->where('roles.name', '<>', 'client')
+            ->where('users.id', '<>', 1) // Exclude super admin
             ->select('users.id', 'users.name', 'users.email', 'users.status', 'users.image', 
                      'employee_details.employee_id', 'employee_details.department_id', 
                      'employee_details.branch_id', 'employee_details.designation_id')
@@ -223,12 +225,9 @@ class NonCsaAttendanceDashboardExport implements FromCollection, WithHeadings, W
         
         foreach ($this->allDates as $date) {
             $dateFormatted = Carbon::parse($date)->format('d-M');
-            $headings[] = $dateFormatted . ' Clock In';
-            $headings[] = $dateFormatted . ' Clock Out';
-            $headings[] = $dateFormatted . ' Sheet Hours';
-            $headings[] = $dateFormatted . ' Punch In';
-            $headings[] = $dateFormatted . ' Punch Out';
-            $headings[] = $dateFormatted . ' Punch Hours';
+            $headings[] = $dateFormatted . ' Sheet Check In - Check Out';
+            $headings[] = $dateFormatted . ' Punch In - Punch Out';
+            $headings[] = $dateFormatted . ' Sheet Hours - Punch Hours';
         }
         
         return $headings;
@@ -247,16 +246,27 @@ class NonCsaAttendanceDashboardExport implements FromCollection, WithHeadings, W
             foreach ($this->allDates as $date) {
                 $dayData = $empData['dates'][$date] ?? null;
                 if ($dayData) {
-                    $row[] = $dayData['clock_in'];
-                    $row[] = $dayData['clock_out'];
-                    $row[] = $dayData['total_hours'];
-                    $row[] = $dayData['punch_in'];
-                    $row[] = $dayData['punch_out'];
-                    $row[] = $dayData['punch_hours'];
+                    // Column 1: Sheet Check In - Check Out
+                    $sheetTimes = '';
+                    if (!empty($dayData['clock_in']) || !empty($dayData['clock_out'])) {
+                        $sheetTimes = ($dayData['clock_in'] ?? '--') . ' - ' . ($dayData['clock_out'] ?? '--');
+                    }
+                    $row[] = $sheetTimes;
+                    
+                    // Column 2: Punch In - Punch Out
+                    $punchTimes = '';
+                    if (!empty($dayData['punch_in']) || !empty($dayData['punch_out'])) {
+                        $punchTimes = ($dayData['punch_in'] ?? '--') . ' - ' . ($dayData['punch_out'] ?? '--');
+                    }
+                    $row[] = $punchTimes;
+                    
+                    // Column 3: Sheet Hours - Punch Hours
+                    $hours = '';
+                    $sheetHrs = !empty($dayData['total_hours']) ? $dayData['total_hours'] . 'h' : '--';
+                    $punchHrs = !empty($dayData['punch_hours']) ? $dayData['punch_hours'] . 'h' : '--';
+                    $hours = $sheetHrs . ' - ' . $punchHrs;
+                    $row[] = $hours;
                 } else {
-                    $row[] = '';
-                    $row[] = '';
-                    $row[] = '';
                     $row[] = '';
                     $row[] = '';
                     $row[] = '';

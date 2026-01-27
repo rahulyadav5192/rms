@@ -969,6 +969,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'account'], function () {
     Route::get('attendances/non-csa-dashboard', [AttendanceController::class, 'nonCsaDashboard'])->name('attendances.non_csa_dashboard');
     Route::get('attendances/export-non-csa-dashboard', [AttendanceController::class, 'exportNonCsaDashboard'])->name('attendances.export_non_csa_dashboard');
     Route::get('attendances/non-csa-cell-details/{userId}/{date}', [AttendanceController::class, 'nonCsaCellDetails'])->name('attendances.non_csa_cell_details');
+    Route::get('attendances/non-csa-employee-month-details/{userId}', [AttendanceController::class, 'nonCsaEmployeeMonthDetails'])->name('attendances.non_csa_employee_month_details');
     Route::resource('attendances', AttendanceController::class);
     Route::get('attendance/{id}/{day}/{month}/{year}', [AttendanceController::class, 'addAttendance'])->name('attendances.add-user-attendance');
     

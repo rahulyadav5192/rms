@@ -27,7 +27,7 @@
 
             <h5 class="mb-0 f-12">
                 <a href="{{  isset($disabledLink) ? 'javascript:;' : route('employees.show', [$user->id]) }}"
-                   class="text-darkest-grey {{ isset($disabledLink) ? 'disabled-link' : '' }}">{!!   $user->userBadge() !!}</a>
+                   class="text-darkest-grey {{ isset($disabledLink) ? 'disabled-link' : '' }}">{!!   $user->userBadge() !!}@if(!is_null($user->employeeDetail) && !empty($user->employeeDetail->employee_id)) <span class="text-muted">({{ $user->employeeDetail->employee_id }})</span>@endif</a>
             </h5>
             <p class="mb-0 f-12 text-dark-grey">
                 {{ !is_null($user->employeeDetail) && !is_null($user->employeeDetail->designation) ? mb_ucfirst($user->employeeDetail->designation->name) : ' ' }}

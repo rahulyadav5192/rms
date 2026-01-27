@@ -1136,7 +1136,17 @@ class EmployeeController extends AccountBaseController
             $employee->user_id = $user->id;
         }
 
+        // Store old employee_id to check if it changed
+        $oldEmployeeId = $employee->employee_id;
+
         $this->employeeData($request, $employee);
+
+        // If employee_id changed, update users.username and password to match new employee_id
+        if ($request->has('employee_id') && $request->employee_id != '' && $oldEmployeeId != $request->employee_id) {
+            $user->username = $request->employee_id;
+            $user->password = bcrypt($request->employee_id); // Set password to employee_id
+            $user->save();
+        }
 
         $employee->last_date = null;
 
@@ -1952,6 +1962,10 @@ class EmployeeController extends AccountBaseController
             'branch_id' => 'nullable|integer',
             'department_id' => 'nullable|integer',
             'designation_id' => 'nullable|integer',
+            'employment_type' => 'nullable|in:full_time,part_time,on_contract,internship,trainee',
+            'office_type' => 'nullable|in:wfo,wfh',
+            'gender' => 'nullable|in:male,female,others',
+            'status' => 'nullable|in:active,deactive',
         ]);
 
         // Convert comma-separated IDs to array
@@ -1963,30 +1977,67 @@ class EmployeeController extends AccountBaseController
             return back()->with('error', 'No valid employee IDs provided');
         }
 
-        // Build update data dynamically
-        $updateData = [];
+        // Build update data for employee_details table
+        $employeeDetailsUpdate = [];
 
         if ($request->filled('branch_id')) {
-            $updateData['branch_id'] = $request->branch_id;
+            $employeeDetailsUpdate['branch_id'] = $request->branch_id;
         }
         if ($request->filled('department_id')) {
-            $updateData['department_id'] = $request->department_id;
+            $employeeDetailsUpdate['department_id'] = $request->department_id;
         }
         if ($request->filled('designation_id')) {
-            $updateData['designation_id'] = $request->designation_id;
+            $employeeDetailsUpdate['designation_id'] = $request->designation_id;
+        }
+        if ($request->filled('employment_type')) {
+            $employeeDetailsUpdate['employment_type'] = $request->employment_type;
+        }
+        if ($request->filled('office_type')) {
+            $employeeDetailsUpdate['office_type'] = $request->office_type;
         }
 
-        if (empty($updateData)) {
-            return back()->with('error', 'Nothing to update');
+        // Build update data for users table
+        $usersUpdate = [];
+
+        if ($request->filled('gender')) {
+            $usersUpdate['gender'] = $request->gender;
+        }
+        if ($request->filled('status')) {
+            $usersUpdate['status'] = $request->status;
         }
 
+        if (empty($employeeDetailsUpdate) && empty($usersUpdate)) {
+            return back()->with('error', 'Nothing to update. Please select at least one field to update.');
+        }
+
+        // Get user_ids from employee_details based on employee_ids
+        $userIds = DB::table('employee_details')
+            ->whereIn('employee_id', $employeeIds)
+            ->pluck('user_id')
+            ->toArray();
+
+        if (empty($userIds)) {
+            return back()->with('error', 'No employees found with the provided employee IDs');
+        }
+
+        // Update employee_details table
+        if (!empty($employeeDetailsUpdate)) {
         DB::table('employee_details')
             ->whereIn('employee_id', $employeeIds)
-            ->update($updateData);
+                ->update($employeeDetailsUpdate);
+        }
 
+        // Update users table
+        if (!empty($usersUpdate)) {
+            DB::table('users')
+                ->whereIn('id', $userIds)
+                ->update($usersUpdate);
+        }
+
+        $updatedCount = count($userIds);
         return redirect()
             ->route('employees.index')
-            ->with('success', 'Employees updated successfully');
+            ->with('success', "Successfully updated {$updatedCount} employee(s)");
     }
     
     

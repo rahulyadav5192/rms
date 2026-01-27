@@ -13,6 +13,8 @@ use App\Models\EmployeeShiftSchedule;
 use App\Models\Holiday;
 use App\Models\Team;
 use App\Models\User;
+use App\Models\Branch;
+use App\Models\Designation;
 use App\Notifications\BulkShiftNotification;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
@@ -64,6 +66,8 @@ class EmployeeShiftScheduleController extends AccountBaseController
         $this->year = $now->format('Y');
         $this->month = $now->format('m');
         $this->departments = Team::all();
+        $this->branches = Branch::all();
+        $this->designations = Designation::all();
 
         return view('shift-rosters.index', $this->data);
     }
@@ -76,32 +80,70 @@ class EmployeeShiftScheduleController extends AccountBaseController
         $this->year = $request->change_year ?: $request->year;
         $this->month = $request->change_month ?: $request->month;
 
-        $employees = User::with(
-            ['shifts' => function ($query) {
-                $query->whereRaw('MONTH(employee_shift_schedules.date) = ?', [$this->month])
-                    ->whereRaw('YEAR(employee_shift_schedules.date) = ?', [$this->year]);
-            },
-            'leaves' => function ($query) {
-                $query->whereRaw('MONTH(leaves.leave_date) = ?', [$this->month])
-                    ->whereRaw('YEAR(leaves.leave_date) = ?', [$this->year])
-                    ->where('status', 'approved');
-            }, 'shifts.shift']
-        )->join('role_user', 'role_user.user_id', '=', 'users.id')
+        // Remove ActiveScope to allow filtering by status (active/inactive)
+        $employees = User::withoutGlobalScope(\App\Scopes\ActiveScope::class)
+            ->with(
+                ['shifts' => function ($query) {
+                    $query->whereRaw('MONTH(employee_shift_schedules.date) = ?', [$this->month])
+                        ->whereRaw('YEAR(employee_shift_schedules.date) = ?', [$this->year]);
+                },
+                'leaves' => function ($query) {
+                    $query->whereRaw('MONTH(leaves.leave_date) = ?', [$this->month])
+                        ->whereRaw('YEAR(leaves.leave_date) = ?', [$this->year])
+                        ->where('status', 'approved');
+                }, 'shifts.shift', 'employeeDetail']
+            )
+            ->join('role_user', 'role_user.user_id', '=', 'users.id')
             ->join('roles', 'roles.id', '=', 'role_user.role_id')
             ->leftJoin('employee_details', 'employee_details.user_id', '=', 'users.id')
-            ->select('users.id', 'users.name', 'users.email', 'users.created_at', 'employee_details.department_id', 'users.image')
-            ->where('roles.name', '<>', 'client')->groupBy('users.id');
+            ->select('users.id', 'users.name', 'users.email', 'users.created_at', 'users.status', 'employee_details.department_id', 'employee_details.branch_id', 'employee_details.designation_id', 'employee_details.employee_id', 'users.image')
+            ->where('roles.name', '<>', 'client')
+            ->where('users.id', '<>', 1) // Exclude super admin
+            ->groupBy('users.id');
 
         if ($request->department != 'all') {
             $employees = $employees->where('employee_details.department_id', $request->department);
         }
 
+        if ($request->branch != 'all' && $request->branch) {
+            $employees = $employees->where('employee_details.branch_id', $request->branch);
+        }
+
+        if ($request->designation != 'all' && $request->designation) {
+            $employees = $employees->where('employee_details.designation_id', $request->designation);
+        }
+
+        if ($request->name && $request->name != '') {
+            $employees = $employees->where(function($query) use ($request) {
+                $query->where('users.name', 'like', '%' . $request->name . '%')
+                      ->orWhere('employee_details.employee_id', 'like', '%' . $request->name . '%');
+            });
+        }
+
+        if ($request->active_status !== null && $request->active_status !== '') {
+            if ($request->active_status == '0') {
+                $employees = $employees->where('users.status', 'active');
+            } elseif ($request->active_status == '1') {
+                $employees = $employees->where('users.status', 'deactive');
+            }
+        }
+
+        if ($request->employee_type && $request->employee_type != 'all') {
+            if ($request->employee_type == 'csa') {
+                $employees = $employees->where('employee_details.designation_id', 12);
+            } elseif ($request->employee_type == 'non_csa') {
+                $employees = $employees->where(function($query) {
+                    $query->where('employee_details.designation_id', '<>', 12)
+                          ->orWhereNull('employee_details.designation_id');
+                });
+            }
+        }
 
         if ($request->userId != 'all') {
             $employees = $employees->where('users.id', $request->userId);
         }
 
-        $employees = $employees->get();
+        $employees = $employees->paginate(50);
 
         $this->holidays = Holiday::whereRaw('MONTH(holidays.date) = ?', [$this->month])->whereRaw('YEAR(holidays.date) = ?', [$this->year])->get();
 
@@ -195,6 +237,7 @@ class EmployeeShiftScheduleController extends AccountBaseController
         $this->holidayOccasions = $holidayOccasions;
         $this->shiftColorCode = $shiftColorCode;
         $this->weekMap = Holiday::weekMap('D');
+        $this->employeesPagination = $employees;
 
         $view = view('shift-rosters.ajax.summary_data', $this->data)->render();
         return Reply::dataOnly(['status' => 'success', 'data' => $view]);
@@ -210,30 +253,68 @@ class EmployeeShiftScheduleController extends AccountBaseController
         $this->weekEndDate = $this->weekStartDate->copy()->addDays(6);
         $this->weekPeriod = CarbonPeriod::create($this->weekStartDate, $this->weekStartDate->copy()->addDays(6)); // Get All Dates from start to end date
 
-        $employees = User::with(
-            ['shifts' => function ($query) {
-                $query->wherebetween('employee_shift_schedules.date', [$this->weekStartDate->toDateString(), $this->weekEndDate->toDateString()]);
-            },
-            'leaves' => function ($query) {
-                $query->wherebetween('leaves.leave_date', [$this->weekStartDate->toDateString(), $this->weekEndDate->toDateString()])
-                    ->where('status', 'approved');
-            }, 'shifts.shift', 'leaves.type']
-        )->join('role_user', 'role_user.user_id', '=', 'users.id')
+        // Remove ActiveScope to allow filtering by status (active/inactive)
+        $employees = User::withoutGlobalScope(\App\Scopes\ActiveScope::class)
+            ->with(
+                ['shifts' => function ($query) {
+                    $query->wherebetween('employee_shift_schedules.date', [$this->weekStartDate->toDateString(), $this->weekEndDate->toDateString()]);
+                },
+                'leaves' => function ($query) {
+                    $query->wherebetween('leaves.leave_date', [$this->weekStartDate->toDateString(), $this->weekEndDate->toDateString()])
+                        ->where('status', 'approved');
+                }, 'shifts.shift', 'leaves.type', 'employeeDetail']
+            )
+            ->join('role_user', 'role_user.user_id', '=', 'users.id')
             ->join('roles', 'roles.id', '=', 'role_user.role_id')
             ->leftJoin('employee_details', 'employee_details.user_id', '=', 'users.id')
-            ->select('users.id', 'users.name', 'users.email', 'users.created_at', 'employee_details.department_id', 'users.image')
-            ->where('roles.name', '<>', 'client')->groupBy('users.id');
+            ->select('users.id', 'users.name', 'users.email', 'users.created_at', 'users.status', 'employee_details.department_id', 'employee_details.branch_id', 'employee_details.designation_id', 'employee_details.employee_id', 'users.image')
+            ->where('roles.name', '<>', 'client')
+            ->where('users.id', '<>', 1) // Exclude super admin
+            ->groupBy('users.id');
 
         if ($request->department != 'all') {
             $employees = $employees->where('employee_details.department_id', $request->department);
         }
 
+        if ($request->branch != 'all' && $request->branch) {
+            $employees = $employees->where('employee_details.branch_id', $request->branch);
+        }
+
+        if ($request->designation != 'all' && $request->designation) {
+            $employees = $employees->where('employee_details.designation_id', $request->designation);
+        }
+
+        if ($request->name && $request->name != '') {
+            $employees = $employees->where(function($query) use ($request) {
+                $query->where('users.name', 'like', '%' . $request->name . '%')
+                      ->orWhere('employee_details.employee_id', 'like', '%' . $request->name . '%');
+            });
+        }
+
+        if ($request->active_status !== null && $request->active_status !== '') {
+            if ($request->active_status == '0') {
+                $employees = $employees->where('users.status', 'active');
+            } elseif ($request->active_status == '1') {
+                $employees = $employees->where('users.status', 'deactive');
+            }
+        }
+
+        if ($request->employee_type && $request->employee_type != 'all') {
+            if ($request->employee_type == 'csa') {
+                $employees = $employees->where('employee_details.designation_id', 12);
+            } elseif ($request->employee_type == 'non_csa') {
+                $employees = $employees->where(function($query) {
+                    $query->where('employee_details.designation_id', '<>', 12)
+                          ->orWhereNull('employee_details.designation_id');
+                });
+            }
+        }
 
         if ($request->userId != 'all') {
             $employees = $employees->where('users.id', $request->userId);
         }
 
-        $employees = $employees->get();
+        $employees = $employees->paginate(50);
 
         $this->holidays = Holiday::whereBetween('holidays.date', [$this->weekStartDate->toDateString(), $this->weekEndDate->toDateString()])->get();
 
@@ -307,6 +388,7 @@ class EmployeeShiftScheduleController extends AccountBaseController
         $this->leaveType = $leaveType;
         $this->shiftColorCode = $shiftColorCode;
         $this->weekMap = Holiday::weekMap('D');
+        $this->employeesPagination = $employees;
 
         $view = view('shift-rosters.ajax.week_summary_data', $this->data)->render();
         return Reply::dataOnly(['status' => 'success', 'data' => $view]);

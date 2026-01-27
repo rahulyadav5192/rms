@@ -93,3 +93,29 @@
         @endforeach
     </x-table>
 </div>
+
+@if(isset($employeesPagination) && method_exists($employeesPagination, 'links'))
+    <div class="d-flex justify-content-between align-items-center mt-3 shift-pagination" style="flex-wrap: wrap; gap: 15px;">
+        <div class="pagination-info">
+            @if($employeesPagination->total() > 0)
+                Showing {{ $employeesPagination->firstItem() ?? 0 }} to {{ $employeesPagination->lastItem() ?? 0 }} 
+                of {{ $employeesPagination->total() }} employees
+            @else
+                No employees found
+            @endif
+        </div>
+        <div>
+            {!! $employeesPagination->appends([
+                'week_start_date' => $weekStartDate->toDateString(),
+                'department' => request('department', 'all'),
+                'branch' => request('branch', 'all'),
+                'designation' => request('designation', 'all'),
+                'name' => request('name', ''),
+                'active_status' => request('active_status', ''),
+                'employee_type' => request('employee_type', 'all'),
+                'userId' => request('userId', 'all'),
+                'view_type' => request('view_type', 'week'),
+            ])->onEachSide(1)->links() !!}
+        </div>
+    </div>
+@endif
